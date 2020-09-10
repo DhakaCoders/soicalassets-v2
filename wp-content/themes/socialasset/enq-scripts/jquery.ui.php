@@ -1,0 +1,12 @@
+<?php
+/**
+Theme specific styles and scripts
+	wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
+	wp_enqueue_style( $handle, $src, $deps, $ver );
+*/ 
+wp_enqueue_style('cbv-ui-style', get_template_directory_uri() . '/assets/css/jquery-ui.css', array(), null);
+wp_enqueue_style('cbv-tagit-style', get_template_directory_uri() . '/assets/tag.suggest/css/jquery.tagit.css', array(), null);
+wp_enqueue_script('uijs', get_template_directory_uri() . '/assets/js/jquery-ui.js', array('jquery'), '1.0.0', true);
+wp_enqueue_script('cbv-tag.js', get_template_directory_uri() . '/assets/tag.suggest/js/tag-it.js', array('jquery'), '1.0.0', true);
+
+?>

@@ -1,0 +1,133 @@
+/**
+All Transitions
+*/
+a,input,img,textarea,button{
+	transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+}
+.scale{ 
+	transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-o-transform: scale(1.1);
+}
+.flx-btn-center input[type="submit"]:hover, 
+.flx-btn-center a:hover,
+.profile-submit-btn input[type="submit"]:hover, 
+.profile-submit-btn a:hover,
+.ncc-submit-btns input[type="submit"]:hover{
+    background: #024bdd;
+}
+#edit-profile-cancle-btn:hover,
+.profile-submit-btn input[type="reset"]:hover, 
+.profile-submit-btn #edit-profile-cancle-btn:hover{
+    background: #999797;
+    color: #fff;
+}
+.ncc-submit-btns button:hover,
+.ncc-submit-btns a:hover{
+    background: #0055FF;
+    border-color: #0055FF;
+    color: #fff;
+}
+.ncc-input-fields-row input[type="text"]:focus,
+.ncc-add-tag input[type="text"]:focus{
+    background: #e8e6e6;
+}
+
+/**
+All Hovers
+*/
+a:focus,button:focus,input:focus,textarea:focus{
+	outline: none;
+}
+a:hover{
+	text-decoration: none;
+}
+
+.hm-banner-slider .slick-current .hm-banner-design-1 .hm-banner-slider-item-lft-bg{
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+.hm-banner-slider .slick-current .hm-banner-design-1 .hm-banner-slider-item-rgt-des{
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+.hm-banner-slider .slick-current .hm-banner-design-1 h4{
+    -webkit-animation-name: fadeInUpShort;
+    animation-name: fadeInUpShort;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+.hm-banner-slider .slick-current .hm-banner-design-1 p{
+    -webkit-animation-name: fadeInUpShort;
+    animation-name: fadeInUpShort;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 1.7s;
+    animation-delay: 1.7s;
+}
+.hm-banner-slider .slick-current .hm-banner-design-1 a{
+    -webkit-animation-name: fadeInUpShort;
+    animation-name: fadeInUpShort;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 2.2s;
+    animation-delay: 2.2s;	
+}
+
+
+.hm-banner-slider .slick-current .hm-banner-design-2 span.sr-only-txt{
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 0.h3s;
+    animation-delay: 0.3s;
+}
+.hm-banner-slider .slick-current .hm-banner-design-2 h2{
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+.hm-banner-slider .slick-current .hm-banner-design-2 a{
+    -webkit-animation-name: fadeInUpShort;
+    animation-name: fadeInUpShort;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+
+

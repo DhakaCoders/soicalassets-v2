@@ -1,0 +1,221 @@
+.hdr-has-shadow{
+	background: #fff;
+-webkit-box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
+-moz-box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
+box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
+}
+
+.gray-bg{
+	background-color: #f4f5f9;
+}
+.modal-open .modal{
+	padding-left: 5px!important;
+	padding-right: 5px!important;
+}
+.modal-page{
+	padding: 150px  15px 150px;
+}
+.modal-page .btn{
+	max-width: 370px;
+	width: 100%;
+	word-wrap: break-word;
+	height: auto;
+}
+
+.modal-content{
+	border-radius: 10px;
+	border: none;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.modal-login-form{
+	padding: 65px 60px 45px;
+
+}
+
+.modal-login-form > p{
+	margin-bottom: 32px;
+	font-size: 19px;
+	line-height: 22px;
+}
+
+.modal-login-form .fl-submit-btn input[type="submit"]{
+	border-radius: 28px;
+}
+
+
+
+/* 
+----------------- 
+Start sitemap
+-----------------
+*/   
+.sitemap{
+  max-width: 800px;
+  margin: 0 auto;
+  padding:100px 0;
+}
+.sitemap ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sitemap ul ul {
+   margin-left: 30px;
+  padding-top: 12px;
+}
+
+.sitemap ul li {
+  padding: 5px 0;
+  margin-bottom: 0;
+}
+
+.sitemap ul li a {
+  display: inline-block;
+  vertical-align: baseline;
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  position: relative;
+  -ms-transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+.sitemap ul li a:hover{
+  color: #0055FF;
+}
+.sitemap ul li a:focus{
+  text-decoration: underline;
+}
+.sitemap h2 {
+  margin: 0;
+  padding-bottom: 40px;
+  text-transform: uppercase;
+  color: #0055FF;
+}
+
+
+
+
+/*=====================
+	cokie design
+=====================*/
+
+.social-cookie-bar{
+	position: fixed;
+	bottom: 70px;
+	left:58px;
+	z-index: 99;
+	max-width: 572px;
+	background: #fff;
+	padding: 35px 36px 38px 48px;
+	-webkit-box-shadow: 1px 1px 28px -11px rgba(0,0,0,0.30);
+	-moz-box-shadow: 1px 1px 28px -11px rgba(0,0,0,0.30);
+	box-shadow: 1px 1px 28px -11px rgba(0,0,0,0.30);
+}
+.social-cookie-bar h6{
+	font-size: 19px;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 12px;
+	color: #0055FF;
+}
+.social-cookie-bar p{
+	font-size: 16px;
+	color: #515A5F;
+	margin-bottom: 23px;
+}
+.social-cookie-btn{
+	display: inline-block;
+	vertical-align: baseline;
+}
+.social-cookie-btn button{
+	font-size: 13px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;
+	width: 162px;
+	height: 52px;
+	border: 2px solid #0055FF;
+	color: #fff;
+	background: #0055FF;
+	cursor: pointer;
+}
+.social-cookie-btn button:hover{
+	color: #0055FF;
+	background: #fff;
+}
+
+.inner-404.clearfix {
+    text-align: center;
+}
+.inner-404.clearfix strong {
+    font-size: 50px;
+}
+
+
+@media(max-width: 1499px){
+
+}
+
+@media(max-width: 1399px){
+
+}
+
+@media(max-width: 1299px){
+
+}
+
+@media(max-width: 1199px){
+
+
+}
+
+@media(max-width: 991px){
+
+}
+
+@media(max-width: 767px){
+
+	.social-cookie-bar{
+		left:15px;
+	}
+}
+
+@media(max-width: 639px){
+	.social-cookie-bar{
+		left:15px;
+		right: 15px;
+		bottom: 70px;
+	}
+}
+
+@media(max-width: 575px){
+	.social-cookie-bar{
+	    padding: 30px 20px 35px;
+	}
+	.social-cookie-btn button{
+	    width: 130px;
+	    height: 45px;
+	}
+	.modal-login-form{
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+
+}
+
+@media(max-width: 479px){
+	.modal-login-form {
+	    padding-left: 25px;
+	    padding-right: 25px;
+	}
+
+}
+
+@media(max-width: 359px){
+
+} 

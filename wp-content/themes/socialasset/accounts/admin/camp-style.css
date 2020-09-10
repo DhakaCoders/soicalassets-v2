@@ -1,0 +1,92 @@
+.clearboth{
+    clear:both;
+    display:table;
+    width: 100%;
+}
+.exporttable-rgt,
+.exporttable-lft{
+    float:left;
+    width:49%;
+}
+.exporttable-rgt{
+    margin-left:2%;
+}
+.post-type-campaigns .videourl-row{
+    margin-bottom: 10px;
+}
+.post-type-campaigns th.sorting,
+.post-type-campaigns th.sorting_desc,
+.post-type-campaigns th.sorting_asc{
+    text-align: left;
+}
+.post-type-campaigns .exporttable-rgt > h2,
+.post-type-campaigns .exporttable-lft > h2{
+    padding-left: 0!important;
+}
+.post-type-campaigns .videourl-row{
+   max-width: 425px;
+    width: 100%;
+    padding-right: 50px;
+    position: relative;
+}
+.post-type-campaigns .videourl-row input[type="text"]{
+    width: 100%;
+    border: none;
+    border-right: 1px solid #ddd;
+    border-radius: 0;
+    background: #fff;
+}
+
+.post-type-campaigns .videourl-row {
+  border: 1px solid #ddd;
+}
+.post-type-campaigns .remove_button {
+  margin-left: 11px;
+  position: absolute;
+  right: 17px;
+  top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+.post-type-campaigns .videourl-inner{
+    padding-bottom: 20px;
+}
+.post-type-campaigns .add_button {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 2.15384615;
+    min-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+   background: #007cba;
+    border-color: #007cba;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+}
+.post-type-campaigns .ncc-text-editor{
+    padding-top: 20px;
+}
+.post-type-campaigns a.add_button:hover{
+    color: #fff;
+    background: #044891;
+}
+.post-type-campaigns .postbox .inside{
+    padding-bottom: 25px;
+}
+
+.post-type-campaigns #poststuff .stuffbox>h3, 
+.post-type-campaigns #poststuff h2, 
+.post-type-campaigns #poststuff h3.hndle{
+    font-weight: bold;   
+}
+

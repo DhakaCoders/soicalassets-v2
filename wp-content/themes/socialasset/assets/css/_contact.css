@@ -1,0 +1,393 @@
+/*
+-----------------------
+sa-contact-form-sec-wrp
+-----------------------
+*/
+.sa-contact-form-sec-wrp{
+	padding-top: 90px;
+	padding-bottom: 145px;
+}
+.sa-contact-form-block{
+	max-width: 665px;
+	width: 100%;
+	margin: 0 auto;
+}
+span.wpcf7-not-valid-tip {
+    margin-top: 12px;
+}
+/*
+--------------------
+ Contact Form Css
+--------------------
+*/
+.sa-form-group-wrap{
+	margin-left: -10px;
+	margin-right: -10px;
+	margin-bottom: 22px;
+}
+.sa-contact-form-wrp .sa-input{
+	width: 50%;
+	float: left;
+	padding: 0 10px;
+	margin: 0;
+}
+.sa-contact-form-wrp label{
+	font-weight: normal;
+	display: block;
+	margin: 0;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.sa-contact-form-wrp input[type="text"],
+.sa-contact-form-wrp input[type="email"],
+.sa-contact-form-wrp textarea,
+.sa-contact-form-wrp select{
+	border: none;
+	height: 50px;
+	background: #f7f7f7;
+	width: 100%;
+	padding: 15px 15px;
+	 -webkit-appearance: none;
+   -moz-appearance:  none;
+   appearance: none;
+   font-size: 13px;
+   border: 1px solid #f7f7f7;
+}
+.sa-contact-form-wrp input[type="text"]:focus,
+.sa-contact-form-wrp input[type="email"]:focus,
+.sa-contact-form-wrp textarea:focus,
+.sa-contact-form-wrp select:focus{
+	background:#cac8c8; 
+}
+.sa-contact-message{
+	margin-top: 35px;
+}
+.sa-contact-form-wrp textarea{
+	height: 111px;
+	resize: none;
+}
+
+.sa-form-group-wrap .select-dep .bootstrap-select .dropdown-toggle{
+	border: none;
+	height: 50px;
+	background-color: #f7f7f7 !important;
+	color: #A3A3A3;
+	border: 1px solid #f7f7f7;
+	width: 100%;
+	padding: 16px 15px 14px 15px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font-size: 14px;
+	line-height: 16px;
+	border-radius: 0!important;
+	outline: none !important;
+	background-image:url(../images/dropdown.png);
+	background-size: 10px 6px;
+	background-repeat: no-repeat;
+	background-position: right 18px top 21px;
+	font-style: italic;
+	text-transform: none !important;
+}
+.sa-form-group-wrap .select-dep{
+	position: relative;
+	height: 50px;
+}
+.sa-form-group-wrap .sa-form-group-wrap form .bootstrap-select{
+	height: 50px;
+}
+.sa-form-group-wrap .form-control:focus{
+	box-shadow: 0 !important;
+	background-color: inherit !important;
+}
+.sa-form-group-wrap .select-dep .dropdown-toggle::after{
+	content: none !important;
+}
+.sa-form-submit-wrap{
+	margin-top: 30px;
+}
+.sa-form-submit-btn{
+	float: left;
+	max-width: 205px;
+	width: 100%;
+}
+.sa-form-submit-btn input[type="submit"]{
+	max-width: 205px;
+	width: 100%;
+	height: 54px;
+	background: #0055fe;
+	border-radius: 50px;
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: 900;
+	color: #fff;
+	transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+.sa-form-submit-btn input[type="submit"]:hover{
+	background: #074ace;
+}
+.sa-form-submit-text{
+	float: right;
+	font-size: 14px;
+	line-height: 16px;
+	padding-top: 20px;
+}
+/*
+--------------------
+sa-google-map-sec-wrp
+--------------------
+*/
+.sa-google-map-sec-wrp{
+	position: relative;
+}
+#googlemap{
+	height: 670px;
+}
+
+.addr-box{
+	position: absolute;
+	right: 175px;
+	top: 50%;
+	transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	max-width: 468px;
+	width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.16);
+    background: #fff;
+    padding: 57px 58px 48px;
+    z-index: 5;
+}
+.addr-box-inner{
+	position: relative;
+	z-index: 3;
+}
+.addr-box-inner h3{
+	margin: 0;
+	color: #0055FF;
+	font-weight: 300;
+	margin-bottom: 30px;
+	font-family: 'Roboto', sans-serif;
+}
+.addr-box-inner h3 strong{
+	display: inline-block;
+	vertical-align: baseline;
+	font-weight: 700;
+}
+.map-date ul,
+.addr-box-inner ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.addr-box-inner ul li{
+	font-size: 16px;
+	line-height: 27px;
+	font-weight: 400;
+}
+.addr-box-inner > ul > li:first-child{
+	padding-bottom: 12px;
+}
+.addr-box-inner ul li a{
+	color: #000;
+}
+.addr-box-inner ul li a:hover{
+	color: #0168f0;
+}
+.map-socail{
+	padding-top: 12px;
+}
+.map-socail a{
+	display: inline-block;
+	vertical-align: baseline;
+	background-color: #f2f2f2;
+	width: 42px;
+	height: 42px;
+	border-radius: 50px;
+	font-size: 18px;
+	line-height: 45px;
+	color: #7b7b7b;
+	text-align: center;
+}
+.map-socail a:hover{
+	color: #0168f0;
+}
+.map-socail a:last-of-type{
+	margin-left: 10px;
+}
+.map-date{
+	max-width: 280px;
+	width: 100%;
+	padding-top: 38px;
+}
+.map-date ul li {
+    padding-bottom: 5px;
+    display: inline-block;
+    vertical-align: baseline;
+    width: 100%;
+}
+.map-date ul li span{
+	width: 50%;
+	float: left;
+	color: #000;
+	font-size: 15px;
+	line-height: 17px;
+	font-weight: 400;
+	display: inline-block;
+	vertical-align: baseline;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+.map-date ul li span:last-child{
+	text-align: right;
+}
+.map-date ul li:first-child span:last-child{
+	padding-right: 13px;
+}
+
+span.wpcf7-not-valid-tip{
+	font-size:14px!important; 
+}
+div.wpcf7-response-output{
+	padding: 10px!important;
+}
+.bootstrap-select .dropdown-toggle:focus{
+	border: none!important;
+}
+.btn-light.focus, 
+.btn-light:focus{
+	box-shadow: none!important;
+	border: none!important;
+}
+/*
+----------------
+ Responive Css
+----------------
+*/
+@media(max-width: 1499px){
+	.addr-box {
+	    right: 100px;
+	    max-width: 400px;
+	    width: 100%;
+	    padding: 50px 40px 40px;
+	}
+}
+
+@media(max-width: 1399px){
+
+}
+
+@media(max-width: 1299px){
+
+}
+
+@media(max-width: 1199px){
+	.addr-box {
+	    right: 30px;
+	    max-width: 400px;
+	    width: 100%;
+	    padding: 50px 35px 40px;
+	}
+	#googlemap {
+	    height: 640px;
+	}
+}
+
+@media(max-width: 991px){	
+	.sa-contact-form-sec-wrp {
+	    padding-top: 70px;
+	    padding-bottom: 100px;
+	}
+	.map-address {
+	    position: relative;
+	    z-index: 2;
+	    margin-left: 15px;
+	    margin-right: 15px;
+	}
+	.addr-box {
+	    max-width: 665px;
+	    width: 100%;
+	    padding: 40px 35px 35px;
+	    position: static;
+	    transform: initial;
+	    margin: 0 auto;
+	    text-align: center;
+	    margin-bottom: -20px;
+	    text-align: center;
+	}
+	.map-date{
+		margin: 0 auto;
+	}
+	#googlemap {
+	    height: 610px;
+	}
+}
+
+@media(max-width: 767px){
+	.sa-contact-form-sec-wrp {
+	    padding-top: 60px;
+	    padding-bottom: 90px;
+	}
+	#googlemap {
+	    height: 550px;
+	}
+	.addr-box-inner h3{
+		margin-bottom: 20px;
+	}
+	.map-date {
+	    padding-top: 25px;
+	}
+}
+
+@media(max-width: 575px){
+	.sa-form-group-wrap {
+	    margin-left: 0;
+	    margin-right: 0;
+	    margin-bottom: 0;
+	}
+	.sa-contact-form-wrp .sa-input {
+	    width: 100%;
+	    margin: 0;
+	    padding: 0;
+	    margin-bottom: 22px;
+	}
+	.sa-contact-message {
+	    margin-top: 15px;
+	}
+	#googlemap {
+	    height: 500px;
+	}
+	.sa-contact-form-sec-wrp {
+	    padding-top: 50px;
+	    padding-bottom: 80px;
+	}
+	.sa-form-submit-text p{
+		font-size: 13px;
+		line-height: 15px;
+	}
+}
+
+@media(max-width: 479px){
+	.sa-form-submit-btn {
+	    max-width: 140px;
+	    width: 100%;
+	}
+	.sa-form-submit-btn input[type="submit"]{
+		height: 45px;
+	}
+	.sa-form-submit-text{
+		padding-top: 14px;
+	}
+	#googlemap {
+	    height: 450px;
+	}
+}
+
+@media(max-width: 359px){
+
+}

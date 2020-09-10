@@ -1,0 +1,255 @@
+
+.footer-wrp{
+  background: #000417;
+  padding-top: 70px;
+} 
+
+.ftr-col-1{
+  max-width: 175px;
+}
+.ftr-col-1 h5{
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.ftr-col-2 h5 {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.ftr-col-1 ul li:first-child {
+  margin-bottom: 26px;
+}
+.ftr-col-1 ul li {
+  margin-bottom: 8px;
+}
+.ftr-col-1 li a{
+  display: inline-block;
+  vertical-align: baseline;
+  color: #fff;
+  font-size: 15px;
+  line-height: 25px;
+}
+.ftr-col-1 li a:hover{
+  color: #0055FF;
+}
+.ftr-col-2{
+  max-width: 470px;
+  float: right;
+}
+.ftr-col-2 p{
+  font-size: 14px;
+  color: #969392;
+  line-height: 22px;
+  margin-bottom: 30px;
+}
+.nl-from-wrp{
+  position: relative;
+  margin-bottom: 52px;
+}
+.nl-from-wrp input{
+  width: 100%;
+  border:1px solid #343434;
+  border-radius: 30px;
+  padding: 23px 70px 25px 33px;
+  font-size: 15px;
+  background: transparent;
+  color: #fff;
+}
+.nl-from-wrp input:focus{
+  border:1px solid #fff;
+}
+.nl-from-wrp ::-webkit-input-placeholder {
+  color: #fff;
+  opacity: 1;
+  font-style: italic;
+}
+.nl-from-wrp :-ms-input-placeholder {
+  color: #fff;
+  opacity: 1;
+  font-style: italic;
+}
+.nl-from-wrp ::placeholder {
+  color: #fff;
+  opacity: 1;
+  font-style: italic;
+}
+.nl-from-wrp button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 70px;
+  text-align: center;
+  background: transparent;
+  cursor: pointer;
+  color: #fff;
+}
+.nl-from-wrp button:hover{
+  color: #0055FF;
+}
+.nl-from-wrp button i{
+  display: inline-block;
+  vertical-align: baseline;
+  padding-top: 4px;
+  font-size: 20px
+}
+.ftr-col-2 ul li a{
+  display: inline-block;
+  vertical-align: baseline;
+  color: #969392;
+  font-size: 12px;  
+}
+
+.ftr-col-2 ul li {
+  float: left;
+  margin-right: 35px;
+}
+.ftr-col-2 ul li:last-child {
+  margin-right: 0;
+}
+.ftr-col-2 ul li a:hover{
+  color: #0055FF;
+}
+.ftr-social{
+  padding-top: 48px;  
+}
+.ftr-social a{
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 20px;
+  color: #969392;
+  margin-right: 20px;
+  position: relative;
+}
+.ftr-social a:last-child{
+  top: 2px;
+}
+.ftr-social a:hover{
+  color: #0055FF;
+}
+.footer-wrp .ftr-btm{
+  padding: 75px 0 30px;
+}
+.footer-wrp .ftr-btm-lft {
+  padding-top: 3px;
+}
+.footer-wrp .ftr-btm-lft span{
+  display: inline-block;
+  vertical-align: baseline;
+  color: #868686;
+  font-size: 11px;
+}
+.footer-wrp .ftr-btm-rgt{
+  text-align: right;
+}
+.footer-wrp .creation-with-txt{
+  position: relative;
+  color: #fff;
+  font-size: 11px;
+  margin-bottom: 0;
+  line-height: 30px;
+  padding-right: 4px;
+  display: inline-block;
+  opacity: 0;
+  -ms-filter: "alpha(opacity=0)";
+  filter: alpha(opacity=0);
+  zoom: 1;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -webkit-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+}
+.footer-wrp .creation-with-txt i {
+    color: #f11;
+}
+.footer-wrp .ftr-btm-rgt a:hover .creation-with-txt{
+  opacity: 1;
+  -ms-filter: "alpha(opacity=100)";
+  filter: alpha(opacity=100);
+  zoom: 1;
+}
+
+
+
+
+
+
+
+
+
+@media(max-width: 1499px){
+
+}
+
+@media(max-width: 1399px){
+
+}
+
+@media(max-width: 1299px){
+
+}
+
+@media(max-width: 1199px){
+
+
+}
+
+@media(max-width: 991px){
+
+  
+}
+
+@media(max-width: 767px){
+  .footer-wrp .ftr-btm {
+    padding: 30px 0 30px;
+  }
+  .ftr-col-1 {
+    max-width: initial;
+    text-align: center;
+  }
+  .ftr-social {
+    padding-top: 20px;
+  }
+  .ftr-col-2 {
+    max-width: initial;
+    float: none;
+    padding-top: 45px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .ftr-col-2 ul{
+    display: table;
+    margin: 0 auto;
+  }
+  .nl-from-wrp {
+    position: relative;
+    margin-bottom: 35px;
+  }
+}
+
+@media(max-width: 575px){
+  .nl-from-wrp input {
+    padding: 15px 70px 18px 24px;
+  }
+
+}
+
+@media(max-width: 479px){
+  .ftr-col-2 ul li {
+    margin-right: 20px;
+  }
+  .nl-from-wrp input {
+    padding: 20px 70px 20px 15px;
+  }
+}
+
+@media(max-width: 359px){
+  .ftr-col-2 ul li a {
+    font-size: 11px;
+  }
+}

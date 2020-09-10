@@ -1,0 +1,22 @@
+
+@font-face {
+    font-family: 'LatoRegular';
+    src: url('LatoRegular/LatoRegular.eot');
+    src: url('LatoRegular/LatoRegular.eot') format('embedded-opentype'),
+         url('LatoRegular/LatoRegular.woff2') format('woff2'),
+         url('LatoRegular/LatoRegular.woff') format('woff'),
+         url('LatoRegular/LatoRegular.ttf') format('truetype'),
+         url('LatoRegular/LatoRegular.svg#LatoRegular') format('svg');
+    font-weight: normal;
+}
+
+@font-face {
+	font-family: "NeutrafaceTextBold";
+	src: url("NeutrafaceTextBold/NeutrafaceTextBold.eot");
+	src: url("NeutrafaceTextBold/NeutrafaceTextBold.eot?#iefix") format("embedded-opentype"),
+		url("NeutrafaceTextBold/NeutrafaceTextBold.woff2") format("woff2"),
+		url("NeutrafaceTextBold/NeutrafaceTextBold.woff") format("woff"),
+		url("NeutrafaceTextBold/NeutrafaceTextBold.ttf") format("truetype"),
+		url("NeutrafaceTextBold/NeutrafaceTextBold.svg#Neutraface Text Bold") format("svg");
+    font-weight: normal;
+}

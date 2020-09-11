@@ -31,10 +31,11 @@ get_header();
 						</div>
 					</div>
 					<div class="supported-ngos-area">
+						<h3 class="supported-ngos-area-title">Supported NGOs</h3>
 						<ul class="reset-list ulc">
 							<li>
 								<div class="supported-ngo-item">
-									<div>
+									<div class="mHc">
 										<img src="<?php echo THEME_URI;?>/assets/images/sa-cocacola.png">
 									</div>
 									<strong>NGO Title</strong>
@@ -42,24 +43,24 @@ get_header();
 							</li>
 							<li>
 								<div class="supported-ngo-item">
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/sa-cocacola.png">
+									<div class="mHc">
+										<img src="<?php echo THEME_URI;?>/assets/images/sa-accenture.png">
 									</div>
 									<strong>NGO Title</strong>
 								</div>
 							</li>
 							<li>
 								<div class="supported-ngo-item">
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/sa-cocacola.png">
+									<div class="mHc">
+										<img src="<?php echo THEME_URI;?>/assets/images/sa-nestle.png">
 									</div>
 									<strong>NGO Title</strong>
 								</div>
 							</li>
 							<li>
 								<div class="supported-ngo-item">
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/sa-cocacola.png">
+									<div class="mHc">
+										<img src="<?php echo THEME_URI;?>/assets/images/sa-nokia.png">
 									</div>
 									<strong>NGO Title</strong>
 								</div>

@@ -64,7 +64,7 @@ box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
 
 
 .s2-page-bnr-cntlr{
-	height: 540px;
+	height: 545px;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -79,6 +79,7 @@ box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
 	font-size: 50px;
 	line-height: 1;
 	color: #fff;
+	margin-bottom: 30px;
 }
 .bnr-circle{
 	border: 5px solid #fff;
@@ -91,6 +92,7 @@ box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
 	bottom: -60px;
 	z-index: 2;
 	border-radius: 100% 100%;
+	max-width: 225px;
 }
 
 

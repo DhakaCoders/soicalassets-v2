@@ -1,0 +1,32 @@
+.company-profile-page-con-top{
+	padding: 175px 0 130px;
+	background: #f4f5f9;
+}
+.cppct-des-cntrl{
+	max-width: 1000px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.cppct-des-inr{
+	max-width: 760px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.cppct-des-inr img{
+	width: 100%;
+	margin-top: 70px;
+	margin-bottom: 60px;
+}
+.supported-ngos-area ul{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.supported-ngos-area ul li{
+	width: 25%;
+	padding: 0 35px 50px;
+	text-align: center;
+}

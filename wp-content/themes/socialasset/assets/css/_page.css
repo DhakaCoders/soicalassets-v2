@@ -61,6 +61,42 @@ box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
     padding: 15px 10px;
 
 }
+
+
+.s2-page-bnr-cntlr{
+	height: 540px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.inline-bg{
+	background-size: cover!important;
+	background-repeat: no-repeat!important;
+	background-position: center center!important;
+}
+.s2-page-bnr-title{
+	font-size: 50px;
+	line-height: 1;
+	color: #fff;
+}
+.bnr-circle{
+	border: 5px solid #fff;
+	background: #fff;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	bottom: -60px;
+	z-index: 2;
+	border-radius: 100% 100%;
+}
+
+
+
+
+
 @media(max-width: 575px){
 	.qquickViewModal .fl-login-form{
 		padding: 35px 20px;

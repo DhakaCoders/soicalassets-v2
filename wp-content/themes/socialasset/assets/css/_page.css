@@ -132,7 +132,9 @@ a.pbitb-btn{
 	margin-bottom: 45px;
 	color: #fff;
 }
-
+.video-play img{
+	margin-bottom: 0!important;
+}
 @media(max-width: 575px){
 	.qquickViewModal .fl-login-form{
 		padding: 35px 20px;

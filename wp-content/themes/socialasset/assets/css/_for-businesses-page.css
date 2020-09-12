@@ -39,8 +39,25 @@
 	margin-bottom: 1700px;
 }
 
+.sa-testimonial-sec-blockquot-inner:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 0;
+    background: url(../images/testimonials-top-q-icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    width: 41px;
+    height: 94px;
+}
 
-
+.s2-for-businesses-page-cntlr .sa-companies-section .sa-copany-name-slider-item{
+	display: block!important;
+}
+.s2-for-businesses-page-cntlr .s2-to-be-supported-page-entry-hdr{
+	padding-bottom: 150px;
+}
 
 
 @media(max-width: 1199px){

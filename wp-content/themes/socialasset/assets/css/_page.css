@@ -97,7 +97,41 @@ box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
 
 
 
-
+.page-bnr-itb-cntlr{
+	height: 750px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+a.pbitb-btn{
+	max-width: 245px;
+	height: 55px;
+	border-radius: 28px;
+	background: #0055FF;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 900;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.page-bnr-itb-icon{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+.page-bnr-itb-title{
+	font-size: 50px;
+	font-weight: 700;
+	line-height: 1.2;
+	margin-bottom: 45px;
+	color: #fff;
+}
 
 @media(max-width: 575px){
 	.qquickViewModal .fl-login-form{

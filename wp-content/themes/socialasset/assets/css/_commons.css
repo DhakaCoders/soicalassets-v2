@@ -101,7 +101,12 @@ Containers
 .container-xs{
 	max-width: 850px;
 }
-
+.block-1000{
+	max-width: 1000px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 .ulc{
 	margin: 0;

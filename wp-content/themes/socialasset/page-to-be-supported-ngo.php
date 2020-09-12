@@ -139,7 +139,7 @@ get_header();
 										<div class="inline-bg" style="background: url(<?php echo THEME_URI;?>/assets/images/press-sec-grd-item-fea-img-01.jpg);"></div>
 									</div>
 									<div class="press-sec-grd-item-des mHc">
-										<h5 class="psgi-title">Writing in the Sciences</h5>
+										<h5 class="psgi-title mHc1">Writing in the Sciences</h5>
 										<p>This course teaches scientists to become more effective writer. Topics include: principles of good writing,  the format of a scientific manuscript, ethical issues in scientific publications.</p>
 									</div>
 								</div>
@@ -151,7 +151,7 @@ get_header();
 										<div class="inline-bg" style="background: url(<?php echo THEME_URI;?>/assets/images/press-sec-grd-item-fea-img-02.jpg);"></div>
 									</div>
 									<div class="press-sec-grd-item-des mHc">
-										<h5 class="psgi-title">Introduction to Translational Science</h5>
+										<h5 class="psgi-title mHc1">Introduction to Translational Science</h5>
 										<p>Translational science seeks to speed up the process of moving research discoveries from the laboratory into healthcare practices.</p>
 									</div>
 								</div>
@@ -163,7 +163,7 @@ get_header();
 										<div class="inline-bg" style="background: url(<?php echo THEME_URI;?>/assets/images/press-sec-grd-item-fea-img-03.jpg);"></div>
 									</div>
 									<div class="press-sec-grd-item-des mHc">
-										<h5 class="psgi-title">Open Source tools for Data Science</h5>
+										<h5 class="psgi-title mHc1">Open Source tools for Data Science</h5>
 										<p>In this course, you’ll learn about Jupyter Notebooks, RStudio IDE, Apache Zeppelin and Data Science Experience.</p>
 									</div>
 								</div>

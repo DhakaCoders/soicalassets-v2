@@ -93,12 +93,120 @@ li.cat-active .campaigns-main-cat-bg,
 
 .campaigns-slect-filters-lft{
 	float: left;
-	width: 60%;
+	width: 23%;
+}
+.campaigns-slect-filters-mid{
+	width: 54%;
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.campaigns-slect-filters-mid > div{
+	position: relative;
 }
 .campaigns-slect-filters-rgt{
 	float: right;
-	width: 40%;
+	width: 23%;
 }
+
+.campaigns-slect-filters-min-toggle{
+	background: #FFF;
+	padding: 30px 0 0 20px;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	display: none;
+}
+.campaigns-slect-filters-min-toggle ul li{
+	float: left;
+	width: 33.3333%;
+	padding-bottom: 30px;
+}
+.campaigns-slect-filters-min-toggle ul li:nth-child(3n+1){
+	clear: left;
+}
+.campaigns-slect-filters-min-toggle .filter-check-row > label{
+	display: block;
+	text-decoration: none!important;
+}
+.dg-con{
+	display: flex;
+
+}
+.dg-con div{
+	padding-left: 10px;
+}
+.dg-con div span{
+	display: block;
+	font-size: 13px;
+	line-height: 1;
+	font-weight: 700;
+	padding-bottom: 7px;
+}
+.dg-con div p{
+	font-size: 13px;
+	line-height: 1;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-transform: uppercase;
+}
+.dg-con{
+	padding-left: 65px;
+	min-height: 65px;
+}
+.dg-con i{
+	width: 65px;
+	height: 65px;
+	position: absolute;
+	left: 28px;
+	top: 0;
+}
+.dg-con i img{
+	width: 100%;
+	height: 100%;
+}
+.csfm-btn{
+	font-size: 14px;
+	line-height: 1;
+	display: block;
+	height: 42px;
+	background: #fff;
+	-webkit-box-shadow: 0px 3px 15px 0px rgba(212,220,227,1);
+	-moz-box-shadow: 0px 3px 15px 0px rgba(212,220,227,1);
+	box-shadow: 0px 3px 15px 0px rgba(212,220,227,1);
+	border-radius: 5px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 10px 26px 10px 26px;
+	font-weight: 400;
+	z-index: 12;
+	cursor: pointer;
+
+}
+
+.csfm-btn::after{
+    content: "\f107";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    text-decoration: inherit;
+    color: #000;
+    font-size: 18px;
+    padding-right: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    right: 10px;
+    line-height: 15px;
+}
+
+.csfm-btn.menu-expend::after{
+	content: "\f106";
+}
+
 .campaigns-slect-filters-rgt .sa-selctpicker-ctlr{
 	float: right;
 }

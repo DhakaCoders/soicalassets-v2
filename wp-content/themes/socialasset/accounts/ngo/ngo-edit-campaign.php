@@ -229,21 +229,68 @@ if($camp_data && isset($var2) && !empty($var2)){
             </select>
           </div>
         </div>
+        <div class="sa-selctpicker-ctlr">
+            <label>Select Social Development Goals</label>
+            <select name="" class="selectpicker multiple-select" multiple>
+              <option selected>01 No poverty</option>
+              <option>02 zero hunger</option>
+              <option>03 good health and well-being</option>
+              <option>04 quality education</option>
+              <option>05 gender equality</option>
+              <option>06 clean water and sanitation</option>
+              <option>07 affordable and clean energy</option>
+              <option>08 decent work and economy growth</option>
+              <option>09 industry, innovation and infrastructure</option>
+              <option>10 reduced inequalities</option>
+            </select>
+          </div>
+        
           <div class="ncc-add-tag">
             <label>Add Tags</label>
             <div>
               <input type="text" name="campaign_tags" id="singleFieldTags2" value="<?php echo $post_ctags; ?>" placeholder="Add comma between tags. (e.g: sea, turtle, pollution)">
             </div>
           </div>
+          <div class="ngo-new-campaign-progress">
+            <label>Progress</label>
+            <div class="campaigns-vote-info">
+              <div class="campaigns-vote-percentage-bar clearfix">
+                <div class="campaigns-vote-percentage-number"><span>25%</span></div>
+                <div class="campaigns-vote-percentage">
+                  <div>
+                    <span style="width: 25%"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="months-left">
+                <i class="far fa-clock"></i>
+                <span>3 months left</span>
+              </div>
+            </div>
+          </div>
+
           <input type="hidden" name="ngo_update_campaign_nonce" value="<?php echo wp_create_nonce('ngo-update-campaign-nonce'); ?>"/>
-          <div class="ncc-submit-btns">
-                    <?php $preview_url = $camp_data->post_type.'/'.
-                      $camp_data->post_name.'/?preview_id='.
-                      $camp_data->ID.'&preview=true'; 
-                    ?>
-            <a href="<?php echo esc_url(home_url($preview_url));?>">PREVIEW</a>
-            <input type="submit" name="draft_campaign" value="Save draft">
-            <input type="submit" name="update_campaign" value="Publish">
+          <div class="ngoec-btm">
+            <div class="switch-btn">
+              
+            </div>
+            <div class="custom-control custom-switch fl-custom-switch">
+              <!-- <input type="checkbox" class="custom-control-input" id="customSwitches"> -->
+              <div class="switch-icon-cntlr">
+                <input type="checkbox" name="draft_campaign" class="switch-input" id="customSwitches" checked>
+                <span class="switch-icon"></span>
+              </div>
+              <label class="customSwitcheslabel" for="customSwitches">Active</label>
+            </div>
+            <div class="ncc-submit-btns ngoec-btm-rgt">
+                      <?php $preview_url = $camp_data->post_type.'/'.
+                        $camp_data->post_name.'/?preview_id='.
+                        $camp_data->ID.'&preview=true'; 
+                      ?>
+              <a href="<?php echo esc_url(home_url($preview_url));?>">PREVIEW</a>
+              
+              <input type="submit" name="update_campaign" value="Publish">
+            </div>
           </div>
         </div>
       </form>

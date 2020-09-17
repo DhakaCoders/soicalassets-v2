@@ -601,6 +601,15 @@ $("#loadMore").on('click', function(e) {
 });
     //new WOW().init();
 
+
+  $('.csfm-btn').on('click', function(){
+    $(this).toggleClass('menu-expend');
+    $('.campaigns-slect-filters-min-toggle').slideToggle(500);
+  });
+
+
+
+
 })(jQuery);
 
 (function($) {
@@ -642,6 +651,10 @@ containerRightWidthCal();
 $(window).on('resize', function(){
   containerRightWidthCal();
 });
+
+
+
+
 
     
 })(jQuery);

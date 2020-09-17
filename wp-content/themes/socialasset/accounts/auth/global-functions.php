@@ -335,7 +335,7 @@ function camp_user_role($role = ''){
 
 function checked_loggedin(){
 	$user = wp_get_current_user();
-	
+
 	if($user && $user->cap_key !=NULL ):
 		if ( in_array( 'ngo', (array) $user->roles ) && is_user_logged_in() ){
 			echo '<script>window.location.href="'.site_url().'/myaccount"</script>'; exit();
@@ -383,3 +383,25 @@ function get_author_avatar(){
 	}
 
 }
+
+function redirect_profile(){
+	$bprofile = false;
+	if( isset($_GET['bprofile']) && $_GET['bprofile'] == 'show'){
+		$bprofile = true;
+	}
+
+    $user = wp_get_current_user();
+
+	if($user && $user->cap_key !=NULL ):
+		if(in_array( 'business', (array) $user->roles ) && ($bprofile) && is_user_logged_in()){
+			echo '<script>window.location.href="'.home_url('wp-admin').'"</script>'; exit();
+		}
+		else{
+			return false;
+		}
+	else:
+		return false;
+	endif;
+}
+
+add_action('init', 'redirect_profile');

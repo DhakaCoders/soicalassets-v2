@@ -95,286 +95,52 @@ $reterms = array_insert($inactiveid, 2, $activeid);
                   </div>
                 </div>
                 <div class="campaigns-slect-filters-mid">
+                  <?php
+                    $goals = get_terms( array(
+                        'taxonomy' => 'goals',
+                        'hide_empty' => false,
+                        'orderby' => 'ID',
+                        'order'   => 'ASC',
+                        'parent' => 0
+                    ) );
+                    $count = count($goals);
+                    $totalCount = ($count > 0)? $count: '0';
+                  ?>
                   <div>
-                    <strong class="csfm-btn">Choose from 17 Social Development Goals</strong>
+                    <strong class="csfm-btn">Choose from <?php echo $totalCount; ?> Social Development Goals</strong>
+                    <?php if ( ! empty( $goals ) && ! is_wp_error( $goals ) ){ ?>
                     <div class="campaigns-slect-filters-min-toggle">
+                      <form action="" method="get">
                       <ul class="ulc clearfix">
+                        <?php $i = 1; foreach ( $goals as $goal ) { ?>
                         <li>
                           <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg1" name="dg1" value="YES">
+                            <input type="checkbox" id="dg<?php echo $i; ?>" name="goals[]" value="<?php echo $goal->slug; ?>">
                             <span class="checkmark"></span> 
                             <label for="dg1"> 
                                 <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-01.jpg"></i>
+                                  <i>
+                                    <?php 
+                                      $glogoID = get_field('logo', $goal);
+                                      if( !empty($glogoID) ) echo cbv_get_image_tag($glogoID);
+                                    ?>
+                                  </i>
                                   <div>
-                                    <span>1</span>
-                                    <p>No poverty</p>
+                                    <span><?php echo $i; ?></span>
+                                    <p><?php echo $goal->name; ?></p>
                                   </div>
                                 </div>
                             </label> 
                           </div>
                         </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg2" name="dg2" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg2"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-02.jpg"></i>
-                                  <div>
-                                    <span>2</span>
-                                    <p>zero hunger</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg3" name="dg3" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg3"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-03.jpg"></i>
-                                  <div>
-                                    <span>3</span>
-                                    <p>good health and well-being</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg4" name="dg4" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg4"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-04.jpg"></i>
-                                  <div>
-                                    <span>4</span>
-                                    <p>quality education</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg5" name="dg5" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg5"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-05.jpg"></i>
-                                  <div>
-                                    <span>5</span>
-                                    <p>gender 
-                                      equality</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg6" name="dg6" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg6"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-06.jpg"></i>
-                                  <div>
-                                    <span>6</span>
-                                    <p>clean water 
-                                      and sanitation</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg7" name="dg7" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg7"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-07.jpg"></i>
-                                  <div>
-                                    <span>7</span>
-                                    <p>affordable 
-                                      and clean
-                                      energy</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg8" name="dg8" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg8"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-08.jpg"></i>
-                                  <div>
-                                    <span>8</span>
-                                    <p>decent work
-                                    and economy
-                                    growth</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg9" name="dg9" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg9"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-09.jpg"></i>
-                                  <div>
-                                    <span>9</span>
-                                    <p>industry,
-                                      innovation and
-                                      infrastructure</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg10" name="dg10" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg10"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-10.jpg"></i>
-                                  <div>
-                                    <span>10</span>
-                                    <p>reduced
-                                      inequalities</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg11" name="dg11" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg11"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-11.jpg"></i>
-                                  <div>
-                                    <span>11</span>
-                                    <p>sustainable 
-                                        cities and 
-                                        communities</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg12" name="dg12" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg12"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-12.jpg"></i>
-                                  <div>
-                                    <span>12</span>
-                                    <p>Responsiple 
-                                    Consuption 
-                                    & Production</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg13" name="dg13" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg13"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-13.jpg"></i>
-                                  <div>
-                                    <span>13</span>
-                                    <p>climate 
-                                      action</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg14" name="dg14" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg14"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-14.jpg"></i>
-                                  <div>
-                                    <span>14</span>
-                                    <p>life below 
-                                      water</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg15" name="dg15" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg15"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-15.jpg"></i>
-                                  <div>
-                                    <span>15</span>
-                                    <p>life on 
-                                      land</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg16" name="dg16" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg16"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-16.jpg"></i>
-                                  <div>
-                                    <span>16</span>
-                                    <p>peace, justice
-                                      and strong
-                                      institutions</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
-                        <li>
-                          <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg17" name="dg17" value="YES">
-                            <span class="checkmark"></span> 
-                            <label for="dg17"> 
-                                <div class="dg-con">
-                                  <i><img src="<?php echo THEME_URI ?>/assets/images/dg-img-17.jpg"></i>
-                                  <div>
-                                    <span>17</span>
-                                    <p>partnerships
-                                    for the goals</p>
-                                  </div>
-                                </div>
-                            </label> 
-                          </div>
-                        </li>
+                        <?php $i++; } ?>
                       </ul>
+                      <div class="goal-submit">
+                        <input type="submit" name="goal_submit" value="Submit">
+                      </div>
+                      </form>
                     </div>
+                    <?php } ?>
                   </div>
                 </div>
                 <div class="campaigns-slect-filters-rgt">

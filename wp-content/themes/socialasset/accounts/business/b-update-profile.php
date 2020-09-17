@@ -2,6 +2,32 @@
 $user = wp_get_current_user();
 $content = get_user_meta($user->ID, 'profile_content', true); 
 $bcontent = !empty($content)? $content:'';
+
+
+$user = wp_get_current_user();
+$var2 = $wp_query->get( 'var2' );
+if(isset($var2) && !empty($var2)){
+  $bus_data = get_edit_campaign_post_data($var2);
+}else{
+  $args = array(
+    'author'        =>  $user->ID, 
+    'post_type' => 'business',
+    'posts_per_page' => 1 // no limit
+  );
+  $bus_posts = get_posts( $args );
+  if( $bus_posts ){
+    foreach( $bus_posts as $bus_post ){
+      $buspostID = $bus_post->ID;
+    }
+    $bus_data = get_edit_campaign_post_data($buspostID);
+  }else{
+    $bus_data =  false;
+  }
+}
+$bustitle = !empty($user->first_name)? $user->first_name: '';
+$posttitle = isset($bus_data->post_title)? $bus_data->post_title: $bustitle;
+
+$bcontent = !empty(get_field('profile_content', $bus_data->ID))? get_field('profile_content', $bus_data->ID): '';
 ?>
 <div id="tab-3" class="">
   <div class="tab-con-inr">
@@ -23,9 +49,18 @@ $bcontent = !empty($content)? $content:'';
           <div class="ncc-input-fields-row ncc-input-title-fields-row">
             <label>Business Name</label>
             <input type="text" name="first_name" value="<?php echo !empty($user->first_name)? $user->first_name: '';?>" placeholder="Type a Name here" required="required">
+            <?php if($bus_data){ ?>
+            <input type="hidden" name="postid" value="<?php echo $bus_data->ID ?>" required="required">
+            <?php } ?>
           </div>
         </div>
         <div class="pr-190">
+          <?php if( isset($bus_data->guid) && !empty($bus_data->guid)): ?>
+          <div class="ncc-input-fields-row ncc-input-title-fields-row">
+            <label>URL</label>
+            <input type="text" name="post_url" value="<?php echo $bus_data->guid;?>" >
+          </div>
+          <?php endif; ?>
           <div class="ncc-text-editor">
             <label>Text</label>
               <div>

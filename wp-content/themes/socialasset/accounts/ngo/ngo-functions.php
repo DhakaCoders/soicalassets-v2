@@ -21,57 +21,73 @@ function ngo_profile_update(){
 			if (! add_user_meta( $user->ID, '_ngo_name', $_POST['_ngo_name'], true )) 
 			{ 
 				update_user_meta( $user->ID, '_ngo_name', $_POST['_ngo_name'] );
-				$save = true;
 			}
 		}
-		if(isset($_POST['mission_title']) && !empty($_POST['mission_title'])){
-			if (! add_user_meta( $user->ID, 'mission_title', $_POST['mission_title'], true )) 
-			{ 
-				update_user_meta( $user->ID, 'mission_title', $_POST['mission_title'] );
-				$save = true;
-			}
-		}
-		if(isset($_POST['mission_content']) && !empty($_POST['mission_content'])){
-			if (! add_user_meta( $user->ID, 'mission_content', $_POST['mission_content'], true )) 
-			{ 
-				update_user_meta( $user->ID, 'mission_content', $_POST['mission_content'] );
-				$save = true;
-			}
-		}
-		if(isset($_POST['attachment_id_array']) && !empty($_POST['attachment_id_array'])){
-			$gallery_ids = array();
-			foreach( $_POST['attachment_id_array'] as $attach_id ) {
-				$gallery_ids[] = $attach_id;
-							
-			}
-			//$gallary_serialized = serialize($gallery_ids);
-			if ( ! add_user_meta( $user->ID, 'ngo_galleries', $gallery_ids, true ) ) { 
-			   update_user_meta ( $user->ID, 'ngo_galleries', $gallery_ids );
-			}
-		}
-		if(isset($_POST['vposter']) && !empty($_POST['vposter'])){
-			//$gallary_serialized = serialize($gallery_ids);
-			if ( ! add_user_meta( $user->ID, 'vposter', $_POST['vposter'], true ) ) { 
-			   update_user_meta ( $user->ID, 'vposter', $_POST['vposter'] );
-			}
-		}
-		if(isset($_POST['video_url']) && !empty($_POST['video_url'])){
-			//$gallary_serialized = serialize($gallery_ids);
-			if ( ! add_user_meta( $user->ID, 'video_url', $_POST['video_url'], true ) ) { 
-			   update_user_meta ( $user->ID, 'video_url', $_POST['video_url'] );
-			}
-		}
-		if(isset($_POST['btm_content']) && !empty($_POST['btm_content'])){
-			if (! add_user_meta( $user->ID, 'btm_content', $_POST['btm_content'], true )) 
-			{ 
-				update_user_meta( $user->ID, 'btm_content', $_POST['btm_content'] );
-				$save = true;
-			}
+		if(isset($_POST['postid']) && !empty($_POST['postid'])){
+			$post_information = array(
+				'ID' =>  $_POST['postid'],
+				'post_author' => $user->ID,
+			    'post_title' => wp_strip_all_tags( $_POST['_ngo_name'] ),
+			    'post_type' => 'ngo'
+			);
+			 
+			$post_id = wp_update_post($post_information);
+		}else{
+			$post_information = array(
+				'post_author' => $user->ID,
+			    'post_title' => wp_strip_all_tags( $_POST['_ngo_name'] ),
+			    'post_type' => 'ngo',
+			    'post_status' => 'publish'
+			);
+			 
+			$post_id = wp_insert_post($post_information);
 		}
 
-		if($save){
+		if($post_id){
+			if(isset($_POST['mission_title']) && !empty($_POST['mission_title'])){
+				if (! add_post_meta( $post_id, 'mission_title', $_POST['mission_title'], true )) 
+				{ 
+					update_post_meta( $post_id, 'mission_title', $_POST['mission_title'] );
+				}
+			}
+			if(isset($_POST['mission_content']) && !empty($_POST['mission_content'])){
+				if (! add_post_meta( $post_id, 'mission_content', $_POST['mission_content'], true )) 
+				{ 
+					update_post_meta( $post_id, 'mission_content', $_POST['mission_content'] );
+				}
+			}
+			if(isset($_POST['attachment_id_array']) && !empty($_POST['attachment_id_array'])){
+				$gallery_ids = array();
+				foreach( $_POST['attachment_id_array'] as $attach_id ) {
+					$gallery_ids[] = $attach_id;
+								
+				}
+				//$gallary_serialized = serialize($gallery_ids);
+				if ( ! add_post_meta( $post_id, 'ngo_galleries', $gallery_ids, true ) ) { 
+				   update_post_meta ( $post_id, 'ngo_galleries', $gallery_ids );
+				}
+			}
+			if(isset($_POST['vposter']) && !empty($_POST['vposter'])){
+				//$gallary_serialized = serialize($gallery_ids);
+				if ( ! add_post_meta( $post_id, 'vposter', $_POST['vposter'], true ) ) { 
+				   update_post_meta ( $post_id, 'vposter', $_POST['vposter'] );
+				}
+			}
+			if(isset($_POST['video_url']) && !empty($_POST['video_url'])){
+				//$gallary_serialized = serialize($gallery_ids);
+				if ( ! add_post_meta( $post_id, 'video_url', $_POST['video_url'], true ) ) { 
+				   update_post_meta ( $post_id, 'video_url', $_POST['video_url'] );
+				}
+			}
+			if(isset($_POST['btm_content']) && !empty($_POST['btm_content'])){
+				if (! add_post_meta( $post_id, 'btm_content', $_POST['btm_content'], true )) 
+				{ 
+					update_post_meta( $post_id, 'btm_content', $_POST['btm_content'] );
+				}
+			}
 			$msg['success'] = 'Updated successfully.';
-			stop_fom_resubmittion();
+			wp_redirect( home_url('myaccount/update-profile/'.$post_id) );
+			exit();
 		}else{
 			$msg['error'] = 'Could not update';
 		}

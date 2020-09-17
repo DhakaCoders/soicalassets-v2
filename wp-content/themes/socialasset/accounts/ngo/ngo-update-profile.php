@@ -1,10 +1,31 @@
 <?php 
 $user = wp_get_current_user();
-$m_title = !empty($umetas['mission_title'])? $umetas['mission_title']: '';
-$mcontent = !empty($umetas['mission_content'])? $umetas['mission_content']: '';
-$mposterID = !empty($umetas['vposter'])? $umetas['vposter']: '';
-$mvideo_url = !empty($umetas['video_url'])? $umetas['video_url']: '';
-$mbcontent = !empty($umetas['btm_content'])? $umetas['btm_content']: '';
+$var2 = $wp_query->get( 'var2' );
+if(isset($var2) && !empty($var2)){
+  $ngo_data = get_edit_campaign_post_data($var2);
+}else{
+  $args = array(
+    'author'        =>  $user->ID, 
+    'post_type' => 'ngo',
+    'posts_per_page' => 1 // no limit
+  );
+  $ngo_posts = get_posts( $args );
+  if( $ngo_posts ){
+    foreach( $ngo_posts as $ngo_post ){
+      $ngopostID = $ngo_post->ID;
+    }
+    $ngo_data = get_edit_campaign_post_data($ngopostID);
+  }else{
+    $ngo_data =  false;
+  }
+}
+$ngotitle = !empty($umetas['_ngo_name'])? $umetas['_ngo_name']: '';
+$posttitle = isset($ngo_data->post_title)? $ngo_data->post_title: $ngotitle;
+$m_title = !empty(get_field('mission_title', $ngo_data->ID))? get_field('mission_title', $ngo_data->ID): '';
+$mcontent = !empty(get_field('mission_content', $ngo_data->ID))? get_field('mission_content', $ngo_data->ID): '';
+$mposterID = !empty(get_field('vposter', $ngo_data->ID))? get_field('vposter', $ngo_data->ID): '';
+$mvideo_url = !empty(get_field('video_url', $ngo_data->ID))? get_field('video_url', $ngo_data->ID): '';
+$mbcontent = !empty(get_field('btm_content', $ngo_data->ID))? get_field('btm_content', $ngo_data->ID): '';
 ?>
 <div id="tab-3" class="">
   <div class="tab-con-inr">
@@ -20,17 +41,24 @@ $mbcontent = !empty($umetas['btm_content'])? $umetas['btm_content']: '';
       if(isset($msg) && array_key_exists("success",$msg)){ 
         printf('<div class="action-success"><p><strong>%s</strong></p><span class="actionHide" data-target=".action-success"><i class="fas fa-times"></i></span></div>', $msg['success']);
       }
-      //var_dump($umetas);
-      //echo $ngoname = get_field('_ngo_name', $user->ID);get_user_meta($user->ID, '_ngo_name', true )
     ?>
       <form action="" method="post">
         <div class="width-425">
           <div class="ncc-input-fields-row ncc-input-title-fields-row">
             <label>NGO Name</label>
-            <input type="text" name="_ngo_name" value="<?php echo !empty($umetas['_ngo_name'])? $umetas['_ngo_name']: '';?>" placeholder="Type a Name here" required="required">
+            <input type="text" name="_ngo_name" value="<?php echo $posttitle; ?>" placeholder="Type a Name here" required="required">
+            <?php if($ngo_data){ ?>
+            <input type="hidden" name="postid" value="<?php echo $ngo_data->ID ?>" required="required">
+            <?php } ?>
           </div>
         </div>
         <div class="pr-190">
+          <?php if( isset($ngo_data->guid) && !empty($ngo_data->guid)): ?>
+          <div class="ncc-input-fields-row ncc-input-title-fields-row">
+            <label>URL</label>
+            <input type="text" name="post_url" value="<?php echo $ngo_data->guid;?>" >
+          </div>
+          <?php endif; ?>
           <label><strong>Our Mission</strong></label>
           <hr>
           <div class="ncc-input-fields-row ncc-input-title-fields-row">
@@ -54,7 +82,7 @@ $mbcontent = !empty($umetas['btm_content'])? $umetas['btm_content']: '';
               <span class="uploadedImage" 
                 style="display: inline-block;vertical-align: top; margin-right: -4px;">
                 <?php 
-                  $cam_galleries = get_field('ngo_galleries', $user->ID);
+                  $cam_galleries = !empty(get_field('ngo_galleries', $ngo_data->ID))? get_field('ngo_galleries', $ngo_data->ID): '';
                   if($cam_galleries){
                     foreach( $cam_galleries as $gallery_id ):
                       if(isset($gallery_id['id']) && !empty($gallery_id['id'])){

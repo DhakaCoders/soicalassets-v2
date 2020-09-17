@@ -22,6 +22,8 @@ include('header.php');
                   include('ngo-edit-campaign.php');
                 }elseif($var1 == 'edit-campaign'){
                   include('ngo-profile.php');
+                }elseif($var1 == 'update-profile'){
+                  include('ngo-update-profile.php');
                 }else{
                   include('ngo-profile.php');
                 }

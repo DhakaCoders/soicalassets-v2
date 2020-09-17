@@ -44,6 +44,14 @@ get_header();
 							<li>
 								<div class="supported-ngo-item">
 									<div class="mHc">
+										<img src="<?php echo THEME_URI;?>/assets/images/sa-cocacola.png">
+									</div>
+									<strong>NGO Title</strong>
+								</div>
+							</li>
+							<li>
+								<div class="supported-ngo-item">
+									<div class="mHc">
 										<img src="<?php echo THEME_URI;?>/assets/images/sa-accenture.png">
 									</div>
 									<strong>NGO Title</strong>

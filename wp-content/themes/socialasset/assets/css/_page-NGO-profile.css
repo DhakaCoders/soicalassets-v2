@@ -216,3 +216,11 @@ Gallery design
 .social-development-goals-sec p{
 	margin-bottom: 40px;
 }
+.ncc-campaign-gallery.ngogallery {
+  width: 60%;
+  float: left;
+}
+.ngovideo {
+  float: left;
+  width: 40%;
+}

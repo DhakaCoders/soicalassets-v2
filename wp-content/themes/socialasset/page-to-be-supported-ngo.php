@@ -6,18 +6,32 @@ get_header();
 
 ?>
 
-<section class="page-bnr-itb-cntlr inline-bg" style="background: url(<?php echo THEME_URI;?>/assets/images/for-bsns-bg.png);">
+<?php
+$thisID = get_the_ID();
+$pageTitle = get_the_title($thisID);
+$standaardbanner = get_field('bannerimage', $thisID);
+if( empty($standaardbanner) ) $standaardbanner = THEME_URI.'/assets/images/for-bsns-bg.png';
+  $custom_page_title = get_field('custom_page_titel', $thisID);
+  if(!empty(str_replace(' ', '', $custom_page_title))){
+    $pageTitle = $custom_page_title;
+  }
+?>
+<section class="page-bnr-itb-cntlr inline-bg" style="background: url(<?php echo $standaardbanner; ?>);">
 	<div class="page-bnr-itb-con">
 		<div class="page-bnr-itb-icon">
 			<img src="<?php echo THEME_URI;?>/assets/images/page-bnr-itb-icon-01.png">
 		</div>
-		<h1 class="page-bnr-itb-title">ActionAid Hellas</h1>
-		<a class="pbitb-btn" href="#">CREATE ACCOUNT</a>
+		<h1 class="page-bnr-itb-title"><?php echo $pageTitle; ?></h1>
+		<a class="pbitb-btn" href="<?php echo esc_url( home_url('account/?login=ngo') ); ?>">CREATE ACCOUNT</a>
 	</div>
 </section>
 
 
 <section class="s2-to-be-supported-page-cntlr">
+<?php 
+$intro = get_field('introsec', $thisID);
+if( $intro ): 
+?>
 	<div class="s2-to-be-supported-page-entry-hdr">
 		<span class="s2tbspeh-top-bg"></span>
 		<div class="container">
@@ -25,16 +39,23 @@ get_header();
 				<div class="col-sm-12">
 					<div class="s2tbspeh-con-block">
 						<div class="s2tbspeh-des">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et mi eros. Curabitur scelerisque, nulla non porta consectetur, odio arcu placerat neque, non euismod elit tellus sed ipsum. Cras ultrices lorem non augue pulvinar mattis. Vestibulum quis dignissim augue. Sed condimentum enim id ex pharetra, sit amet bibendum risus convallis. Phasellus sed pretium leo, sed congue nisl. Pellentesque dapibus eros justo, eget faucibus nisi dictum in. Etiam ac mollis justo, ut scelerisque lacus. Nunc ac sem id nulla .</p>
-							<img src="<?php echo THEME_URI;?>/assets/images/s2tbspeh-img.jpg">
-							<a class="pbitb-btn" href="#">CREATE ACCOUNT</a>
+			            <?php 
+			                if(!empty($intro['content'])){
+			             	echo wpautop( $intro['content'] );
+			            ?>
+							<a class="pbitb-btn" href="<?php echo esc_url( home_url('account/?login=ngo') ); ?>">CREATE ACCOUNT</a>
+						<?php } ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+<?php endif; ?>
+<?php 
+  $collalogos = get_field('collaborating_ngos', $thisID);
+  $callogos = $collalogos['callogo'];
+?>
 	<div class="collaborating-ngos-area-sec">
 		<div class="container">
 			<div class="row">
@@ -44,29 +65,23 @@ get_header();
 							<img src="<?php echo THEME_URI;?>/assets/images/cnas-lft-icon.png">
 						</div>
 						<div style="position: relative; z-index: 2;">
-							<h3 class="cnas-title">Συνεργαζόμενες ΜΚΟ</h3>
+							<?php if( !empty($collalogos['title']) ) printf('<h3 class="cnas-title">%s</h3>',$collalogos['title']); ?>
+							<?php if( $callogos ): ?>
 							<ul class="ulc">
+								<?php 
+					              $clogo_tag = '';
+					              foreach( $callogos as $callogo ): 
+					                if( !empty($callogo['logo']) ) 
+					                  $callogo_tag = cbv_get_image_tag($callogo['logo']);
+					            ?>
 								<li>
 									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/collaborating-ngo-icon-01.png">
+										<?php echo $callogo_tag; ?>
 									</div>
 								</li>
-								<li>
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/collaborating-ngo-icon-02.png">
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/collaborating-ngo-icon-03.png">
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/collaborating-ngo-icon-04.png">
-									</div>
-								</li>
+								<?php endforeach; ?>
 							</ul>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>

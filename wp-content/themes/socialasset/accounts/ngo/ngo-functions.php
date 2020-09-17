@@ -7,9 +7,81 @@ function ngo_campaign_action_hook(){
 		ngo_campaign_update();
 		ajax_my_delete_capm_init();
 		ajax_my_draft_capm_init();
+		ngo_profile_update();
 	}
 	
 }
+
+
+function ngo_profile_update(){
+	global $msg, $wpdb;;
+	if (isset( $_POST["add_ngo_profile"] ) && wp_verify_nonce($_POST['add_ngo_profile_nonce'], 'add-ngo-profile-nonce')) {
+		$user = wp_get_current_user();
+		if(isset($_POST['_ngo_name']) && !empty($_POST['_ngo_name'])){
+			if (! add_user_meta( $user->ID, '_ngo_name', $_POST['_ngo_name'], true )) 
+			{ 
+				update_user_meta( $user->ID, '_ngo_name', $_POST['_ngo_name'] );
+				$save = true;
+			}
+		}
+		if(isset($_POST['mission_title']) && !empty($_POST['mission_title'])){
+			if (! add_user_meta( $user->ID, 'mission_title', $_POST['mission_title'], true )) 
+			{ 
+				update_user_meta( $user->ID, 'mission_title', $_POST['mission_title'] );
+				$save = true;
+			}
+		}
+		if(isset($_POST['mission_content']) && !empty($_POST['mission_content'])){
+			if (! add_user_meta( $user->ID, 'mission_content', $_POST['mission_content'], true )) 
+			{ 
+				update_user_meta( $user->ID, 'mission_content', $_POST['mission_content'] );
+				$save = true;
+			}
+		}
+		if(isset($_POST['attachment_id_array']) && !empty($_POST['attachment_id_array'])){
+			$gallery_ids = array();
+			foreach( $_POST['attachment_id_array'] as $attach_id ) {
+				$gallery_ids[] = $attach_id;
+							
+			}
+			//$gallary_serialized = serialize($gallery_ids);
+			if ( ! add_user_meta( $user->ID, 'ngo_galleries', $gallery_ids, true ) ) { 
+			   update_user_meta ( $user->ID, 'ngo_galleries', $gallery_ids );
+			}
+		}
+		if(isset($_POST['vposter']) && !empty($_POST['vposter'])){
+			//$gallary_serialized = serialize($gallery_ids);
+			if ( ! add_user_meta( $user->ID, 'vposter', $_POST['vposter'], true ) ) { 
+			   update_user_meta ( $user->ID, 'vposter', $_POST['vposter'] );
+			}
+		}
+		if(isset($_POST['video_url']) && !empty($_POST['video_url'])){
+			//$gallary_serialized = serialize($gallery_ids);
+			if ( ! add_user_meta( $user->ID, 'video_url', $_POST['video_url'], true ) ) { 
+			   update_user_meta ( $user->ID, 'video_url', $_POST['video_url'] );
+			}
+		}
+		if(isset($_POST['btm_content']) && !empty($_POST['btm_content'])){
+			if (! add_user_meta( $user->ID, 'btm_content', $_POST['btm_content'], true )) 
+			{ 
+				update_user_meta( $user->ID, 'btm_content', $_POST['btm_content'] );
+				$save = true;
+			}
+		}
+
+		if($save){
+			$msg['success'] = 'Updated successfully.';
+			stop_fom_resubmittion();
+		}else{
+			$msg['error'] = 'Could not update';
+		}
+		return $msg;
+	}
+	return false;
+}
+
+
+
 function ngo_campaign_create(){
 	global $msg, $wpdb;;
 	if (isset( $_POST["add_campaign"] ) && wp_verify_nonce($_POST['ngo_add_campaign_nonce'], 'ngo-add-campaign-nonce')) {

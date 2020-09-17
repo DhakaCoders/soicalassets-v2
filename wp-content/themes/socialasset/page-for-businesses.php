@@ -5,14 +5,23 @@
 get_header();
 
 ?>
-
-<section class="page-bnr-itb-cntlr inline-bg" style="background: url(<?php echo THEME_URI;?>/assets/images/for-bsns-bg.png);">
+<?php
+$thisID = get_the_ID();
+$pageTitle = get_the_title($thisID);
+$standaardbanner = get_field('bannerimage', $thisID);
+if( empty($standaardbanner) ) $standaardbanner = THEME_URI.'/assets/images/for-bsns-bg.png';
+  $custom_page_title = get_field('custom_page_titel', $thisID);
+  if(!empty(str_replace(' ', '', $custom_page_title))){
+    $pageTitle = $custom_page_title;
+  }
+?>
+<section class="page-bnr-itb-cntlr inline-bg" style="background: url(<?php echo $standaardbanner; ?>);">
 	<div class="page-bnr-itb-con">
 		<div class="page-bnr-itb-icon">
 			<img src="<?php echo THEME_URI;?>/assets/images/page-bnr-itb-icon-01.png">
 		</div>
-		<h1 class="page-bnr-itb-title">For Businesses</h1>
-		<a class="pbitb-btn" href="#">CREATE ACCOUNT</a>
+		<h1 class="page-bnr-itb-title"><?php echo $pageTitle; ?></h1>
+		<a class="pbitb-btn" href="<?php echo esc_url( home_url('account/?login=ngo') ); ?>">CREATE ACCOUNT</a>
 	</div>
 </section>
 
@@ -95,39 +104,37 @@ get_header();
 	  </div>
 	</div><!-- end of sa-testimonial-section -->
 
-
+	<?php 
+	  $complogos = get_field('companieslogos', $thisID);
+	  if( $complogos ):
+	  $camlogos = $complogos['clogo'];
+	?>
 	<div class="sa-companies-section">
 	  <div class="container">
 	    <div class="row">
 	      <div class="col-sm-12">
 	        <div class="sa-companies-sec-inner">
-	          <h4>Companies that use Social Assets</h4>
+	          <?php if( !empty($complogos['title']) ) printf('<h4>%s</h4>',$complogos['title']); ?>
+	          <?php if( $camlogos ): ?>
 	          <div class="sa-company-name">
+				<?php 
+	              $camlogo_tag = '';
+	              foreach( $camlogos as $camlogo ): 
+	                if( !empty($camlogo['logo']) ) 
+	                  $camlogo_tag = cbv_get_image_tag($camlogo['logo']);
+	            ?>
 	            <div class="sa-copany-name-slider-item">
-	              <i><img src="<?php echo THEME_URI;?>/assets/images/sa-nokia.png"></i>
+	              <i><?php echo $camlogo_tag; ?></i>
 	            </div>
-	            <div class="sa-copany-name-slider-item">
-	              <i><img src="<?php echo THEME_URI;?>/assets/images/sa-cocacola.png"></i>
-	            </div>
-	            <div class="sa-copany-name-slider-item">
-	              <i><img src="<?php echo THEME_URI;?>/assets/images/sa-accenture.png"></i>
-	            </div>
-	            <div class="sa-copany-name-slider-item">
-	              <i><img src="<?php echo THEME_URI;?>/assets/images/sa-nestle.png"></i>
-	            </div>
-	            <div class="sa-copany-name-slider-item">
-	              <i><img src="<?php echo THEME_URI;?>/assets/images/sa-nokia.png"></i>
-	            </div>
-	            <div class="sa-copany-name-slider-item">
-	              <i><img src="<?php echo THEME_URI;?>/assets/images/sa-accenture.png"></i>
-	            </div>
+	            <?php endforeach; ?>
 	          </div>
+	          <?php endif; ?>
 	        </div>
 	      </div>
 	    </div>
 	  </div>
 	</div><!-- end of sa-companies-section -->
-
+	<?php endif; ?>
 </section>
 
 

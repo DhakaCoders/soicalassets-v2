@@ -6,6 +6,7 @@ include_once(ACCOUNT_DIR .'/admin/user-meta-functions.php');
 include_once(ACCOUNT_DIR .'/shortcodes/shortcode-functions.php');
 include_once(ACCOUNT_DIR .'/auth/global-functions.php');
 include_once(ACCOUNT_DIR .'/ngo/ngo-functions.php');
+include_once(ACCOUNT_DIR .'/business/b-functions.php');
 include_once(ACCOUNT_DIR .'/auth/user-ngo-signup.php');
 include_once(ACCOUNT_DIR .'/auth/business-signup.php');
 include_once(ACCOUNT_DIR .'/auth/login.php');

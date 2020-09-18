@@ -223,8 +223,8 @@ if($query->have_posts()):
     <div class="row">
       <div class="col-12">
         <div class="user-rel-camp-innr">
-          <div class="user-rel-camp-head text-center">
-            <a href="">Active Campaigns</a>
+          <div class="user-rel-camp-head user-rel-camp-head-2 text-center">
+            <a class="active" href="">Active Campaigns</a>
             <a href="">Previous Campaigns</a>
           </div>
           <div class="upcoming-campaigns-main">

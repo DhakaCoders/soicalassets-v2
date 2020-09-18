@@ -85,11 +85,39 @@ function get_camp_header(){
    global $wpdb;
    $expire_camp = 0;
    if( empty($authorID) ) return;
-    $query = "SELECT ID FROM $wpdb->posts WHERE post_author = '$authorID' AND post_status = 'publish'";
+    $query = "SELECT ID FROM $wpdb->posts WHERE 
+    post_author = '$authorID' AND 
+    post_type= '$post_type' AND 
+    post_status = 'publish' ";
     $posts = $wpdb->get_results($query);
     $Count = count($posts);
     foreach ($posts as $key => $post) {
       if( camp_expire_date($post->ID) ){
+        $expire_camp += 1;
+      }
+    }
+    if( $expire_camp > 0 )
+      $totalCount = ( $Count - $expire_camp );
+    else
+      $totalCount = $Count;
+    if( $totalCount > 0 )
+      return $totalCount;
+    else
+      return false;
+}
+
+ function get_count_previous_posts_by_author($post_type = 'post', $authorID){
+   global $wpdb;
+   $expire_camp = 0;
+   if( empty($authorID) ) return;
+    $query = "SELECT ID FROM $wpdb->posts WHERE 
+    post_author = '$authorID' AND 
+    post_type= '$post_type' AND 
+    post_status = 'publish' ";
+    $posts = $wpdb->get_results($query);
+    $Count = count($posts);
+    foreach ($posts as $key => $post) {
+      if( !camp_expire_date($post->ID) ){
         $expire_camp += 1;
       }
     }

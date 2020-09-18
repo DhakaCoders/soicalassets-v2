@@ -16,7 +16,7 @@ include('b-header.php');
               if( isset($var1) && !empty($var1) ){
                 if( $var1 == 'supported-campaigns'){
                   include('b-supported-campaigns.php');
-                }if( $var1 == 'update-profile'){
+                }elseif( $var1 == 'update-profile'){
                   include('b-update-profile.php');
                 }else{
                   include('b-profile.php');

@@ -295,9 +295,9 @@ $sumetas = array_map( function( $a ){ return $a[0]; }, get_user_meta( $authorID 
               <div class="miracle-plan-progress-camp">
                 <ul class="ulc clearfix">
                   <li>
-                    <?php 
+                  <?php 
   	                  if( isset($sumetas['_profile_logo_id']) && !empty($sumetas['_profile_logo_id']) ){
-  	                ?>
+  	               ?>
 	                  <i><?php echo get_user_profile_logo_tag($sumetas['_profile_logo_id']);?></i> 
 	                <?php 
 	                } else{ 

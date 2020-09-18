@@ -20,7 +20,11 @@
 	margin-top: 70px;
 	margin-bottom: 60px;
 }
-
+.cppct-des-inr p img{
+	width: 100%;
+	margin-top: 70px;
+	margin-bottom: 60px;
+}
 .supported-ngos-area{
 	margin: 80px 0 0;
 	padding: 100px 0 0;

@@ -37,6 +37,8 @@ if( !function_exists('cbv_theme_setup') ){
         add_image_size( 'abgrid5', 470, 336, true );
         add_image_size( 'faqgrid', 730, 406, true );
         add_image_size( 'bloggrid', 358, 360, true );
+        add_image_size( 'galleryngo', 366, 350, true );
+        add_image_size( 'ngovideoposter', 756, 420, true );
 
 		
 		// add size to media uploader

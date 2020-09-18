@@ -177,6 +177,28 @@
 .switch-input:checked + .switch-icon:after{
 	content: "\f00c";
 }
+
+.user-rel-camp-head{
+	border-bottom: 3px solid #D6DAE0;
+	margin-bottom: 25px;
+	padding-bottom: 0;
+}
+.user-rel-camp-head a{
+	padding: 0 15px 10px;
+    position: relative;
+    color: #000000;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: transparent;
+    display: inline-block;
+    vertical-align: baseline;
+    cursor: pointer;
+    margin-right: 35px;
+    font-size: 16px;
+}
+.user-rel-camp-head a:last-child {
+    margin-right: 0;
+}
 /*
 Gallery design
 */

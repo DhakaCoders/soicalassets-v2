@@ -154,7 +154,7 @@ function my_support_capm(){
 			    update_user_meta( $user->ID, '_support_camp_ids', $impCamp_ids );
 				update_post_meta( $post_id, '_supporter_ids', $impSup_ids );
 				if(in_array( 'subscriber', (array) $user->roles )){
-					$total_count = $get_counts + 1;
+					$total_count = (int)$get_counts + 1;
 					update_post_meta( $post_id, '_supported_count', $total_count );
 				}
 				$data['success'] = 'success';

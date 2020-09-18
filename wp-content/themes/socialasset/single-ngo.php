@@ -45,7 +45,37 @@ $mbcontent = !empty(get_field('btm_content', $ngo_data->ID))? get_field('btm_con
 							<li>
 								<div class="our-follow-impact-grd">
 									<div>
-										<strong>1248</strong>
+										<strong>
+											<?php 
+											$impstr = '';
+											$squery = new WP_Query(array( 
+											    'post_type'=> 'campaigns',
+											    'post_status' => 'publish',
+											    'posts_per_page' => -1,
+											    'author' => $authorID
+											  ) 
+											);
+											$exsupIDs = $arrayMarge = $unicarr = array();
+											if($squery->have_posts()):
+												while($squery->have_posts()): $squery->the_post(); 
+													$supporterIDs = get_post_meta(get_the_ID(), '_supporter_ids', true);
+													if( !empty($supporterIDs) ):
+													$exsupIDs[] = $supporterIDs;
+													endif;
+													
+												endwhile;
+												$impstr = implode(',', $exsupIDs);
+												$unicarr = array_unique(explode(',', $impstr));
+												if($unicarr){
+													echo count($unicarr);
+												}else{
+													echo '0';
+												}
+											else:
+												echo '0';
+											endif; wp_reset_postdata();
+											?>
+										</strong>
 										<span>total<br>
 										supporters</span>
 									</div>
@@ -125,12 +155,15 @@ $mbcontent = !empty(get_field('btm_content', $ngo_data->ID))? get_field('btm_con
 		                  $posterimg = cbv_get_image_tag($mposterID, 'ngovideoposter');
 		                }
 					?>
+					<?php if( !empty( $mvideo_url ) ){ ?>
 					<div class="video-play">
 		                <a <?php echo $atag; ?>>
 		                  <?php echo $posterimg; ?>
 		                </a>
 	              	</div>
-
+	                <?php }else{ ?>
+	              		<?php echo $posterimg; ?>
+	                <?php } ?>
 	              	<div class="social-development-goals-sec">
 	              		<h3 class="sdgs-title">Our Social Development Goals</h3>
 	              		<div class="sdgs-grds">

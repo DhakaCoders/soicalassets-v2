@@ -178,6 +178,7 @@ if( $unique ){
       $count = $query->found_posts;
       
     while($query->have_posts()): $query->the_post();
+      $authorID = get_the_author_meta('ID');
       $attach_id = get_post_thumbnail_id(get_the_ID());
       $feaimg_src = $ClassAdd = '';
       if( !empty($attach_id) ){

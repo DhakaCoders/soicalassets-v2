@@ -133,19 +133,24 @@ if( isset($umetas[$index]) && $umetas[$index] != 'true') return;
           </div>
         </div>
 
-          <div class="sa-selctpicker-ctlr">
+        <?php
+          $goals = get_terms( array(
+              'taxonomy' => 'goals',
+              'hide_empty' => false,
+              'orderby' => 'ID',
+              'order'   => 'ASC',
+              'parent' => 0
+          ) );
+        ?>
+        <div class="sa-selctpicker-ctlr">
             <label>Select Social Development Goals</label>
-            <select name="" class="selectpicker multiple-select" multiple>
-              <option selected>01 No poverty</option>
-              <option>02 zero hunger</option>
-              <option>03 good health and well-being</option>
-              <option>04 quality education</option>
-              <option>05 gender equality</option>
-              <option>06 clean water and sanitation</option>
-              <option>07 affordable and clean energy</option>
-              <option>08 decent work and economy growth</option>
-              <option>09 industry, innovation and infrastructure</option>
-              <option>10 reduced inequalities</option>
+            <select name="goals[]" class="selectpicker multiple-select" multiple>
+              <option value="">Select Goals</option>
+              <?php if ( ! empty( $goals ) && ! is_wp_error( $goals ) ){ ?>
+                <?php $i = 1; foreach ( $goals as $goal ) { ?>
+                  <option value="<?php echo $goal->term_id; ?>"><?php echo $i; ?> <?php echo $goal->name; ?></option>
+                <?php $i++; } ?>
+              <?php } ?>
             </select>
           </div>
 
@@ -156,23 +161,6 @@ if( isset($umetas[$index]) && $umetas[$index] != 'true') return;
             </div>
           </div>
 
-          <div class="ngo-new-campaign-progress">
-            <label>Progress</label>
-            <div class="campaigns-vote-info">
-              <div class="campaigns-vote-percentage-bar clearfix">
-                <div class="campaigns-vote-percentage-number"><span>25%</span></div>
-                <div class="campaigns-vote-percentage">
-                  <div>
-                    <span style="width: 25%"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="months-left">
-                <i class="far fa-clock"></i>
-                <span>3 months left</span>
-              </div>
-            </div>
-          </div>
           <input type="hidden" name="ngo_add_campaign_nonce" value="<?php echo wp_create_nonce('ngo-add-campaign-nonce'); ?>"/>
           <div class="ncc-submit-btns">
             <input type="submit" name="add_campaign" value="Submit">

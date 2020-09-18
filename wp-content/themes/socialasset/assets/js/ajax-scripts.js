@@ -22,6 +22,26 @@ jQuery(document).ready(function($) {
         return false;
     });
 
+    $(document).on( 'click', '.edelete-capm', function() {
+        var id = $(this).data('id');
+        console.log(id);
+        var nonce = $(this).data('nonce');
+        $.ajax({
+            type: 'post',
+            url: ajax_delete_camp_object.ajaxurl,
+            data: {
+                action: 'my_delete_capm',
+                nonce: nonce,
+                id: id
+            },
+            success: function( result ) {
+                if( result == 'success' ) {
+                    window.location.href="http://localhost/2020/09/soicalassets-v2/myaccount/mycampaigns/";
+                }
+            }
+        })
+        return false;
+    });
 });
 
 function campaignDraft(id, nonce){

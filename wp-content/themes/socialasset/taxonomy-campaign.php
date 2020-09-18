@@ -110,12 +110,12 @@ $reterms = array_insert($inactiveid, 2, $activeid);
                     <strong class="csfm-btn">Choose from <?php echo $totalCount; ?> Social Development Goals</strong>
                     <?php if ( ! empty( $goals ) && ! is_wp_error( $goals ) ){ ?>
                     <div class="campaigns-slect-filters-min-toggle">
-                      <form action="" method="get">
+                      <div id="goalsFilter">
                       <ul class="ulc clearfix">
                         <?php $i = 1; foreach ( $goals as $goal ) { ?>
                         <li>
                           <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg<?php echo $i; ?>" name="goals[]" value="<?php echo $goal->slug; ?>">
+                            <input type="checkbox" id="dg<?php echo $i; ?>" name="goals" value="<?php echo $goal->term_id; ?>">
                             <span class="checkmark"></span> 
                             <label for="dg1"> 
                                 <div class="dg-con">
@@ -136,9 +136,9 @@ $reterms = array_insert($inactiveid, 2, $activeid);
                         <?php $i++; } ?>
                       </ul>
                       <div class="goal-submit">
-                        <input type="submit" name="goal_submit" value="Submit">
+                        <input type="submit" name="goal_submit" id="goal_submit" value="Submit">
                       </div>
-                      </form>
+                    </div>
                     </div>
                     <?php } ?>
                   </div>

@@ -68,7 +68,7 @@ $('#change_pass_form').submit(function(){
 });
 
 
-$('input[type="checkbox"]').change(function(){
+$('.switch-checkbox input[type="checkbox"]').change(function(){
     this.value = (Number(this.checked));
     //$(this).attr('checked', false);
     if (this.value == 1) {
@@ -78,7 +78,23 @@ $('input[type="checkbox"]').change(function(){
     }
 });
 
-$('input[type="checkbox"]').each(function(e){
+$('.switch-checkbox input[type="checkbox"]').each(function(e){
+    if($(this).val() == 1){
+        $(this).attr("checked", true);
+    }
+});
+
+$('#switch_camp input[type="checkbox"]').change(function(){
+    this.value = (Number(this.checked));
+    //$(this).attr('checked', false);
+    if (this.value == 1) {
+      $(this).attr("checked", true);
+    } else {
+      $(this).attr("checked", false);
+    }
+});
+
+$('#switch_camp input[type="checkbox"]').each(function(e){
     if($(this).val() == 1){
         $(this).attr("checked", true);
     }

@@ -654,8 +654,27 @@ $(window).on('resize', function(){
 
 
 
+$("#campupdate").on("change", "input:checkbox", function(){
+  $("#campupdate").submit();
+});
 
+$("#goal_submit").click(function () {
+  if( $('#all_campaign').length ){
+    var mycampaigns_url = $('#all_campaign').data('campurl');
+  }
+    //Create an Array.
+    var selected = new Array();
 
+    //Reference the CheckBoxes and insert the checked CheckBox value in Array.
+    $("#goalsFilter input[type=checkbox]:checked").each(function () {
+        selected.push(this.value);
+    });
+
+    //Display the selected CheckBox values.
+    if (selected.length > 0) {
+        window.location.href = mycampaigns_url+'/?goals='+selected.join(",");
+    }
+});
     
 })(jQuery);
 

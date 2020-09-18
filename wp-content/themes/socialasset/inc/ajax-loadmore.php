@@ -4,15 +4,16 @@
  */
 
 function campaign_script_load_more($args = array()) {
-  $keyword = $sorting = $hashtag = $termid = '';
+  $keyword = $sorting = $hashtag = $termid = $goals = '';
   $ccat = get_queried_object();
   if( $ccat ) $termid = @$ccat->term_id;
 
   if( isset($_GET['search']) && !empty($_GET['search'])) $keyword = $_GET['search'];
   if( isset($_GET['sorting']) && !empty($_GET['sorting'])) $sorting = $_GET['sorting'];
   if( isset($_GET['hashtag']) && !empty($_GET['hashtag'])) $hashtag = $_GET['hashtag'];
+  if( isset($_GET['goals']) && !empty($_GET['goals'])) $goals = $_GET['goals'];
   echo '<ul class="ulc masonry" id="ajax-content">';
-      ajax_camp_script_load_more($args, $termid, $keyword, $hashtag, $sorting);
+      ajax_camp_script_load_more($args, $termid, $keyword, $hashtag, $goals, $sorting);
   echo '</ul>';
   if( empty($keyword) ):
   echo '<div class="show-more-btn">
@@ -31,7 +32,7 @@ add_shortcode('ajax_camp_posts', 'campaign_script_load_more');
 /*
  * load more script call back
  */
-function ajax_camp_script_load_more($args, $term_id='', $keyword = '', $htag = '', $sort = 'DESC') {
+function ajax_camp_script_load_more($args, $term_id='', $keyword = '', $htag = '', $goals = '', $sort = 'DESC') {
     //init ajax
     $ajax = false;
     //check ajax call or not
@@ -73,6 +74,23 @@ function ajax_camp_script_load_more($args, $term_id='', $keyword = '', $htag = '
           'taxonomy' => 'campaign_tag',
           'field' => 'slug',
           'terms' => $htag
+        )
+      );
+    }elseif(isset($goals) && !empty($goals) && !empty($term_id)){
+      $exgols = explode(',', $goals);
+
+      $termQuery = array(
+        'relation' => 'AND',
+        array(
+          'taxonomy' => 'campaign',
+          'field' => 'term_id',
+          'terms' => $term_id
+        ),
+        array(
+          'taxonomy' => 'goals',
+          'field' => 'term_id',
+          'terms' => $exgols,
+          'operator' => 'AND',
         )
       );
     }

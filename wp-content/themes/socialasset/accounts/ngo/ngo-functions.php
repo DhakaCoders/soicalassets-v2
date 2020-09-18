@@ -129,6 +129,19 @@ function ngo_campaign_create(){
 		            )
 		        );
 			}
+			if(isset($_POST['goals']) && !empty($_POST['goals'])){
+				$goal_arrs = $_POST['goals'];
+				foreach ($goal_arrs as $key => $goal_v) {
+						$camp_goal_id = (int) $goal_v;
+						$wpdb->insert(
+				            $wpdb->term_relationships,
+				            array(
+				                'object_id'        => $object_id,
+				                'term_taxonomy_id' => $camp_goal_id,
+				            )
+				        );
+				}
+			}
 			if(isset($_POST['campaign_tags']) && !empty($_POST['campaign_tags'])){
 				$tag_exp = explode(',', $_POST['campaign_tags']);
 				foreach ($tag_exp as $key => $tag_v) {
@@ -203,6 +216,7 @@ function ngo_campaign_create(){
 				$buss_imp = implode(',', $_POST['businessids']);
 				add_post_meta( $pid, 'business_camp_attached', $buss_imp, true );
 			}
+			add_post_meta( $pid, 'campaign_status', '1', true );
 			add_post_meta( $pid, '_capmpaign_status', 'draft', true );
 			add_post_meta( $pid, '_supported_count', '0', true );
 			add_post_meta( $pid, '_supporter_ids', '', true );
@@ -218,15 +232,15 @@ function ngo_campaign_create(){
 
 function ngo_campaign_update(){
 	global $msg, $wpdb;;
-	if ( ( isset( $_POST["update_campaign"] ) || isset( $_POST["draft_campaign"] ) ) && wp_verify_nonce($_POST['ngo_update_campaign_nonce'], 'ngo-update-campaign-nonce')) {
+	if ( ( isset( $_POST["capm_id"] ) || isset( $_POST["capm_id"] ) ) && wp_verify_nonce($_POST['ngo_update_campaign_nonce'], 'ngo-update-campaign-nonce')) {
 		$user = wp_get_current_user();
 		if(isset($_POST['campaign']) && $_POST['campaign'] == '-1'){
 			$campaigncat = '';
 		}else{
 			$campaigncat = $_POST['campaign'];
 		}
-		
-		$poststatus = (isset($_POST["draft_campaign"]))? 'draft':'publish';
+		$_POST["active_inactive"];
+		$poststatus = (!isset($_POST["active_inactive"]))? 'draft':'publish';
 			
 		if(empty($msg)){
 			$post_information = array(
@@ -245,8 +259,27 @@ function ngo_campaign_update(){
 		        wp_set_object_terms( $object_id, $cat_id, 'campaign' );
 
 			}
-
-					
+			if(isset($_POST['goals']) && !empty($_POST['goals'])){
+				$goal_arrs = $_POST['goals'];
+				if($goal_arrs):
+					$wpdb->delete(
+			        $wpdb->term_relationships,
+			            array(
+					        'object_id'        => $object_id
+					    ) 
+			        );
+				endif;
+				foreach ($goal_arrs as $key => $goal_v) {
+					$camp_goal_id = (int) $goal_v;
+					$wpdb->insert(
+			            $wpdb->term_relationships,
+			            array(
+			                'object_id'        => $object_id,
+			                'term_taxonomy_id' => $camp_goal_id,
+			            )
+			        );
+				}
+			}		
 
 			if(isset($_POST['campaign_tags']) && !empty($_POST['campaign_tags'])){
 				$tag_exp = explode(',', $_POST['campaign_tags']);
@@ -340,6 +373,11 @@ function ngo_campaign_update(){
 			if(isset($_POST['businessids']) && !empty($_POST['businessids']) && $_POST['businessids'] !=0){
 				$buss_imp = implode(',', $_POST['businessids']);
 				update_post_meta( $pid, 'business_camp_attached', $buss_imp );
+			}
+			if( isset($_POST['active_inactive']) && !empty($_POST['active_inactive'])){
+				update_post_meta( $pid, 'campaign_status', $_POST['active_inactive']);
+			}else{
+				update_post_meta( $pid, 'campaign_status', '0');
 			}
 			$msg['success'] = 'Campaign '.$poststatus.' successfully';
 		}else{

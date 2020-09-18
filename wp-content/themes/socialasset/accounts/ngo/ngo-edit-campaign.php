@@ -11,6 +11,7 @@ if($camp_data && isset($var2) && !empty($var2)){
   $form_date = get_field('capmpaign_from_date', $camp_data->ID);
   $to_date = get_field('capmpaign_to_date', $camp_data->ID);
   $cam_galleries = get_field('campaign_gallery', $camp_data->ID);
+  $camp_status = get_field('campaign_status', $camp_data->ID);
   $fromdate = $todate = '';
   if(isset($form_date) && !empty($form_date)){
     $fromdate = $form_date;
@@ -65,7 +66,7 @@ if($camp_data && isset($var2) && !empty($var2)){
         printf('<div class="action-success"><p><strong>%s</strong></p><span class="actionHide" data-target=".action-success"><i class="fas fa-times"></i></span></div>', $msg['success']);
       }
     ?>
-      <form action="" method="post">
+      <form id="campupdate" action="" method="post">
         <div class="width-425">
           <div class="ncc-input-fields-row ncc-input-title-fields-row">
             <label>Title</label>
@@ -229,19 +230,32 @@ if($camp_data && isset($var2) && !empty($var2)){
             </select>
           </div>
         </div>
+        <?php
+          $goals = get_terms( array(
+              'taxonomy' => 'goals',
+              'hide_empty' => false,
+              'orderby' => 'ID',
+              'order'   => 'ASC',
+              'parent' => 0
+          ) );
+
+          $getgoals = get_the_terms( $camp_data->ID, 'goals' );
+          $goal_ids = array();
+          if ( ! empty( $getgoals ) ) {
+              foreach( $getgoals as $goalv ) {
+                 $goal_ids[] = $goalv->term_id; 
+              }
+          }
+        ?>
         <div class="sa-selctpicker-ctlr">
             <label>Select Social Development Goals</label>
-            <select name="" class="selectpicker multiple-select" multiple>
-              <option selected>01 No poverty</option>
-              <option>02 zero hunger</option>
-              <option>03 good health and well-being</option>
-              <option>04 quality education</option>
-              <option>05 gender equality</option>
-              <option>06 clean water and sanitation</option>
-              <option>07 affordable and clean energy</option>
-              <option>08 decent work and economy growth</option>
-              <option>09 industry, innovation and infrastructure</option>
-              <option>10 reduced inequalities</option>
+            <select name="goals[]" class="selectpicker multiple-select" multiple>
+              <option value="">Select Goals</option>
+              <?php if ( ! empty( $goals ) && ! is_wp_error( $goals ) ){ ?>
+                <?php $i = 1; foreach ( $goals as $goal ) { ?>
+                  <option value="<?php echo $goal->term_id; ?>" <?php if(in_array( $goal->term_id, $goal_ids )): echo 'selected="selected"'; endif;?>><?php echo $i; ?> <?php echo $goal->name; ?></option>
+                <?php $i++; } ?>
+              <?php } ?>
             </select>
           </div>
         
@@ -255,16 +269,18 @@ if($camp_data && isset($var2) && !empty($var2)){
             <label>Progress</label>
             <div class="campaigns-vote-info">
               <div class="campaigns-vote-percentage-bar clearfix">
-                <div class="campaigns-vote-percentage-number"><span>25%</span></div>
+                <div class="campaigns-vote-percentage-number"><span><?php echo camp_progress_bar($camp_data->ID); ?>%</span></div>
                 <div class="campaigns-vote-percentage">
                   <div>
-                    <span style="width: 25%"></span>
+                    <span style="width: <?php echo camp_progress_bar($camp_data->ID); ?>%"></span>
                   </div>
                 </div>
               </div>
               <div class="months-left">
-                <i class="far fa-clock"></i>
-                <span>3 months left</span>
+                <?php if(date_remaining($camp_data->ID)): ?>
+                  <i class="far fa-clock"></i>
+                  <span><?php echo date_remaining($camp_data->ID); ?></span>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -272,12 +288,11 @@ if($camp_data && isset($var2) && !empty($var2)){
           <input type="hidden" name="ngo_update_campaign_nonce" value="<?php echo wp_create_nonce('ngo-update-campaign-nonce'); ?>"/>
           <div class="ngoec-btm">
             <div class="switch-btn">
-              
             </div>
             <div class="custom-control custom-switch fl-custom-switch">
               <!-- <input type="checkbox" class="custom-control-input" id="customSwitches"> -->
-              <div class="switch-icon-cntlr">
-                <input type="checkbox" name="draft_campaign" class="switch-input" id="customSwitches" checked>
+              <div class="switch-icon-cntlr" id="switch_camp">
+                <input type="checkbox" name="active_inactive" class="switch-input" id="customSwitches" <?php if( $camp_status == '1' ): echo 'checked'; endif;?>>
                 <span class="switch-icon"></span>
               </div>
               <label class="customSwitcheslabel" for="customSwitches">Active</label>
@@ -288,8 +303,9 @@ if($camp_data && isset($var2) && !empty($var2)){
                         $camp_data->ID.'&preview=true'; 
                       ?>
               <a href="<?php echo esc_url(home_url($preview_url));?>">PREVIEW</a>
-              
-              <input type="submit" name="update_campaign" value="Publish">
+              <?php if( !camp_expire_date($camp_data->ID) ){ ?>
+              <a href="<?php echo esc_url(home_url('myaccount/mycampaigns/'.$camp_data->ID));?>" onclick="return confirm('Are you sure you want to delete at this campaign: <?php echo $camp_data->post_title; ?>?')" data-id="<?php echo $camp_data->ID; ?>" data-nonce="<?php echo wp_create_nonce('my_delete_camp_nonce') ?>" class="edelete-capm">DELETE</a>
+              <?php } ?>
             </div>
           </div>
         </div>

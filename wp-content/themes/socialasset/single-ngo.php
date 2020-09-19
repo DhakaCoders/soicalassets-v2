@@ -6,9 +6,17 @@ $thisID = get_the_ID();
 $authorID = get_the_author_meta('ID');
 $sumetas = array_map( function( $a ){ return $a[0]; }, get_user_meta( $authorID ) );
 $bcontent = !empty(get_field('profile_content', $thisID))? get_field('profile_content', $thisID): '';
+
+
+$bannerID = !empty(get_post_meta($thisID, 'bannerimage', true))? get_post_meta($thisID, 'bannerimage', true): '';
+if( empty($bannerID) ) {
+  $standaardbanner = THEME_URI.'/assets/images/page-bnr-NGO-profile.jpg';
+}else{
+    $standaardbanner = cbv_get_image_src($bannerID);
+}
 ?>
 
-<section class="s2-page-bnr-cntlr inline-bg" style="background: url(<?php echo THEME_URI;?>/assets/images/page-bnr-NGO-profile.jpg);">
+<section class="s2-page-bnr-cntlr inline-bg" style="background: url(<?php echo $standaardbanner; ?>);">
 	<div class="s2-page-bnr-con">
 		<h1 class="s2-page-bnr-title"><?php the_title(); ?></h1>
 	</div>

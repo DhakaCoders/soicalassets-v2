@@ -89,6 +89,27 @@ if( $intro ):
 		</div>
 	</div>
 
+<?php 
+	$impstr = '';
+	$squery = new WP_Query(array( 
+	    'post_type'=> 'campaigns',
+	    'post_status' => 'publish',
+	    'posts_per_page' => -1
+	  ) 
+	);
+	$exsupIDs = $arrayMarge = $unicarr = array();
+	if($squery->have_posts()):
+		while($squery->have_posts()): $squery->the_post(); 
+			$supporterIDs = get_post_meta(get_the_ID(), '_supporter_ids', true);
+			if( !empty($supporterIDs) ):
+			$exsupIDs[] = $supporterIDs;
+			endif;
+			
+		endwhile;
+		$impstr = implode(',', $exsupIDs);
+		$unicarr = array_unique(explode(',', $impstr));
+?>
+
 	<div class="thay-support-us">
 		<div class="container">
 			<div class="container">
@@ -96,45 +117,32 @@ if( $intro ):
 					<div class="col-sm-12">
 						<div class="block-1000">
 							<h3 class="tsu-title">They Support us</h3>
+							<?php if($unicarr){ ?>
 							<ul class="ulc">
+								<?php 
+								foreach ($unicarr as $key => $bus_id):
+									$busUser = get_user_by( 'id', $bus_id);
+									$roles = ( array ) $busUser->roles;
+									if( $roles[0] == 'business' ){
+										$logoID = get_user_meta($busUser->ID, '_profile_logo_id', true);
+										if( isset($logoID) && !empty($logoID) ){			
+								?>
 								<li>
 									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/partner-2.png">
+										<?php echo get_user_profile_logo_tag($logoID, 'full'); ?>
 									</div>
 								</li>
-								<li>
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/partner-3.png">
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/partner-1.png">
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/partner-3.png">
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/partner-1.png">
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="<?php echo THEME_URI;?>/assets/images/partner-4.png">
-									</div>
-								</li>
+								<?php 	} } ?>
+								<?php endforeach; ?>
 							</ul>
+							<?php } ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+<?php endif; wp_reset_postdata(); ?>
 	<div class="press-section">
 		<div class="container">
 			<div class="row"> 

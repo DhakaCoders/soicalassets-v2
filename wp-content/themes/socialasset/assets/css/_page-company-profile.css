@@ -58,3 +58,7 @@
 	font-size: 12px;
 	font-weight: 600;
 }
+
+ul#bus-supported-camp li:nth-child(n+5) {
+    display:none;
+}

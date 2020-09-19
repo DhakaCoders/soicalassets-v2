@@ -72,11 +72,67 @@ $tags = get_terms( array(
                 <div class="campaigns-slect-filters-lft">
                   <div class="search-by-name">
                     <form action="" method="get">
-                      <input type="search" name="search" value="<?php echo $search_result; ?>">
+                      <input type="search" name="search" placeholder="Search by Name" value="<?php echo $search_result; ?>">
                       <button><i class="fas fa-search"></i></button>
                     </form>
                   </div>
                 </div>
+
+                <div class="campaigns-slect-filters-mid">
+                  <?php
+                    $goals = get_terms( array(
+                        'taxonomy' => 'goals',
+                        'hide_empty' => false,
+                        'orderby' => 'ID',
+                        'order'   => 'ASC',
+                        'parent' => 0
+                    ) );
+                    $count = count($goals);
+                    $totalCount = ($count > 0)? $count: '0';
+                    $exgoalIDs = array();
+                    if( isset($_GET['goalids']) && !empty($_GET['goalids'])){
+                      $exgoalIDs = explode(',', $_GET['goalids']);
+                      echo '<span style="display:none;" id="goalsIDs" data-goalids="'.$_GET['goalids'].'"></span>';
+                    }
+                  ?>
+                  <div>
+                    <strong class="csfm-btn">Choose from <?php echo $totalCount; ?> Social Development Goals</strong>
+                    <?php if ( ! empty( $goals ) && ! is_wp_error( $goals ) ){ ?>
+                    <div class="campaigns-slect-filters-min-toggle">
+                      <div id="goalsFilter">
+                      <ul class="ulc clearfix">
+                        <?php $i = 1; foreach ( $goals as $goal ) { ?>
+                        <li>
+                          <div class="filter-check-row clearfix">
+                            <input type="checkbox" id="dg<?php echo $i; ?>" name="goals" value="<?php echo $goal->term_id; ?>" <?php if( in_array($goal->term_id, $exgoalIDs) ): echo 'checked'; endif; ?>>
+                            <span class="checkmark"></span> 
+                            <label for="dg<?php echo $i; ?>"> 
+                                <div class="dg-con">
+                                  <i>
+                                    <?php 
+                                      $glogoID = get_field('logo', $goal);
+                                      if( !empty($glogoID) ) echo cbv_get_image_tag($glogoID);
+                                    ?>
+                                  </i>
+                                  <div>
+                                    <span><?php echo $i; ?></span>
+                                    <p><?php echo $goal->name; ?></p>
+                                  </div>
+                                </div>
+                            </label> 
+                          </div>
+                        </li>
+                        <?php $i++; } ?>
+                      </ul>
+                      <div class="goal-submit">
+                        <input type="submit" name="goal_submit" id="goal_submit" value="Submit">
+                      </div>
+                    </div>
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
+
                 <div class="campaigns-slect-filters-rgt">
                   <div class="sa-selctpicker-ctlr">
                   <label>Sort by</label>

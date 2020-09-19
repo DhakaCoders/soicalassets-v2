@@ -6,9 +6,17 @@ $thisID = get_the_ID();
 $authorID = get_the_author_meta('ID');
 $sumetas = array_map( function( $a ){ return $a[0]; }, get_user_meta( $authorID ) );
 $bcontent = !empty(get_field('profile_content', $thisID))? get_field('profile_content', $thisID): '';
+
+$bannerID = !empty(get_post_meta($thisID, 'bannerimage', true))? get_post_meta($thisID, 'bannerimage', true): '';
+if( empty($bannerID) ) {
+  $standaardbanner = THEME_URI.'/assets/images/page-bnr-company-profile.jpg';
+}else{
+  $standaardbanner = cbv_get_image_src($bannerID);
+}
+
 ?>
 
-<section class="s2-page-bnr-cntlr inline-bg" style="background: url(<?php echo THEME_URI;?>/assets/images/page-bnr-company-profile.jpg);">
+<section class="s2-page-bnr-cntlr inline-bg" style="background: url(<?php echo $standaardbanner; ?>);">
 	<div class="s2-page-bnr-con">
 		<h1 class="s2-page-bnr-title"><?php the_title(); ?></h1>
 	</div>
@@ -104,7 +112,7 @@ if($query->have_posts()):
           </div>
           <div class="upcoming-campaigns-main">
             <div class="user-campaign-list-cntlr">
-              <ul class=" ulc clearfix">
+              <ul class="ulc clearfix" id="bus-supported-camp">
                 <?php 
                   $ClassAdd = '';
                   while($query->have_posts()): $query->the_post(); 
@@ -195,7 +203,7 @@ if($query->have_posts()):
                 </li>
                 <?php endwhile; ?>
               </ul>
-              <div class="show-more-btn">
+              <div class="show-more-btn business-btn">
                 <a href="">SHOW MORE</a>
               </div>
             </div>

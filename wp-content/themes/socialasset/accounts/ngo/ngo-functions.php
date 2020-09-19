@@ -44,6 +44,10 @@ function ngo_profile_update(){
 		}
 
 		if($post_id){
+			if (! add_post_meta( $post_id, 'bannerimage', $_POST['bannerimage'], true )) 
+			{ 
+				update_post_meta( $post_id, 'bannerimage', $_POST['bannerimage'] );
+			}
 			if(isset($_POST['mission_title']) && !empty($_POST['mission_title'])){
 				if (! add_post_meta( $post_id, 'mission_title', $_POST['mission_title'], true )) 
 				{ 

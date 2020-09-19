@@ -45,7 +45,7 @@ $bcontent = !empty(get_field('profile_content', $bus_data->ID))? get_field('prof
       }
     ?>
       <form action="" method="post">
-        <div class="width-425">
+        <div class="pr-190">
           <div class="ncc-input-fields-row ncc-input-title-fields-row">
             <label>Business Name</label>
             <input type="text" name="first_name" value="<?php echo !empty($user->first_name)? $user->first_name: '';?>" placeholder="Type a Name here" required="required">
@@ -61,6 +61,27 @@ $bcontent = !empty(get_field('profile_content', $bus_data->ID))? get_field('prof
             <input type="text" name="post_url" value="<?php echo $bus_data->guid;?>" >
           </div>
           <?php endif; ?>
+          <div class="width-425 ncc-input-fields-row ngo-upload-cover-photo">
+            <?php 
+            $bannerID = !empty(get_post_meta($bus_data->ID, 'bannerimage', true))? get_post_meta($bus_data->ID, 'bannerimage', true): '';
+              $bannerimg = '';
+              if( !empty($bannerID) ){
+                $bannerimg = cbv_get_image_tag($bannerID, 'medium');
+              }
+            ?>
+            <div class="vposter-inner">
+              <div class="ngo-upload-cover-photo-inr">
+                <div id="featured_image">
+                <span>Upload Banner Image</span>
+                <i><img src="<?php echo THEME_URI; ?>/assets/images/plus-black.png"></i>
+                </div>
+                <input type="hidden" id="_featured_picture" name="bannerimage" value="<?php echo $bannerID; ?>">
+                <div id="featured-picture-priview" class="vposter-picture clearfix">
+                  <?php echo $bannerimg; ?>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="ncc-text-editor">
             <label>Text</label>
               <div>

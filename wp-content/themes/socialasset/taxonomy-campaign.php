@@ -114,6 +114,11 @@ $reterms = array_insert($inactiveid, 2, $activeid);
                     ) );
                     $count = count($goals);
                     $totalCount = ($count > 0)? $count: '0';
+                    $exgoalIDs = array();
+                    if( isset($_GET['goalids']) && !empty($_GET['goalids'])){
+                      $exgoalIDs = explode(',', $_GET['goalids']);
+                      echo '<span style="display:none;" id="goalsIDs" data-goalids="'.$_GET['goalids'].'"></span>';
+                    }
                   ?>
                   <div>
                     <strong class="csfm-btn">Choose from <?php echo $totalCount; ?> Social Development Goals</strong>
@@ -124,9 +129,9 @@ $reterms = array_insert($inactiveid, 2, $activeid);
                         <?php $i = 1; foreach ( $goals as $goal ) { ?>
                         <li>
                           <div class="filter-check-row clearfix">
-                            <input type="checkbox" id="dg<?php echo $i; ?>" name="goals" value="<?php echo $goal->term_id; ?>">
+                            <input type="checkbox" id="dg<?php echo $i; ?>" name="goals" value="<?php echo $goal->term_id; ?>" <?php if( in_array($goal->term_id, $exgoalIDs) ): echo 'checked'; endif; ?>>
                             <span class="checkmark"></span> 
-                            <label for="dg1"> 
+                            <label for="dg<?php echo $i; ?>"> 
                                 <div class="dg-con">
                                   <i>
                                     <?php 

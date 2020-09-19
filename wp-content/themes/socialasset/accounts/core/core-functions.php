@@ -103,12 +103,15 @@ if(!function_exists('allow_ngo_uploads')){
     $ngo_role = get_role('ngo');
     $ngo_role->add_cap('read');
     $ngo_role->add_cap('upload_files');
-    //$ngo_role->add_cap('edit_posts');
+    $ngo_role->add_cap('delete_posts');
+    $ngo_role->add_cap('edit_posts');
 
 
     $b_role = get_role('business');
     $b_role->add_cap('read');
     $b_role->add_cap('upload_files');
+    $b_role->add_cap('delete_posts');
+    $b_role->add_cap('edit_posts');
 
 
     $sb_role = get_role('subscriber');

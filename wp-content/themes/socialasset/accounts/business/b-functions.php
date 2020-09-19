@@ -34,10 +34,13 @@ function business_profile_update(){
 
 
 		if($post_id){
+			if (! add_post_meta( $post_id, 'bannerimage', $_POST['bannerimage'], true )) 
+			{ 
+				update_post_meta( $post_id, 'bannerimage', $_POST['bannerimage'] );
+			}
 			if (! add_post_meta( $post_id, 'profile_content', $_POST['business_profile_content'], true )) 
 			{ 
 				update_post_meta( $post_id, 'profile_content', $_POST['business_profile_content'] );
-				$save = true;
 			}
 			$msg['success'] = 'Updated successfully.';
 			wp_redirect( home_url('myaccount/update-profile/'.$post_id) );

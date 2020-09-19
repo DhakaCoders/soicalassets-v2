@@ -43,7 +43,7 @@ $mbcontent = !empty(get_field('btm_content', $ngo_data->ID))? get_field('btm_con
       }
     ?>
       <form action="" method="post">
-        <div class="width-425">
+        <div class="pr-190">
           <div class="ncc-input-fields-row ncc-input-title-fields-row">
             <label>NGO Name</label>
             <input type="text" name="_ngo_name" value="<?php echo $posttitle; ?>" placeholder="Type a Name here" required="required">
@@ -59,6 +59,28 @@ $mbcontent = !empty(get_field('btm_content', $ngo_data->ID))? get_field('btm_con
             <input type="text" name="post_url" value="<?php echo $ngo_data->guid;?>" >
           </div>
           <?php endif; ?>
+          <div class="width-425 ncc-input-fields-row ngo-upload-cover-photo">
+            <?php 
+            $bannerID = !empty(get_post_meta($ngo_data->ID, 'bannerimage', true))? get_post_meta($ngo_data->ID, 'bannerimage', true): '';
+              $bannerimg = '';
+              if( !empty($bannerID) ){
+                $bannerimg = cbv_get_image_tag($bannerID, 'medium');
+              }
+            ?>
+            <div class="upload-bannerimage-inner">
+              <div class="ngo-upload-cover-photo-inr">
+                <div id="featured_image">
+                <span>Upload Banner Image</span>
+                <i><img src="<?php echo THEME_URI; ?>/assets/images/plus-black.png"></i>
+                </div>
+                <input type="hidden" id="_featured_picture" name="bannerimage" value="<?php echo $bannerID; ?>">
+                <div id="featured-picture-priview" class="vposter-picture clearfix">
+                  <?php echo $bannerimg; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <label><strong>Our Mission</strong></label>
           <hr>
           <div class="ncc-input-fields-row ncc-input-title-fields-row">

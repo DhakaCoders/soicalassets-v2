@@ -539,6 +539,12 @@ $("#loadMore").on('click', function(e) {
     var key_word = '';
     var sortQuery = '';
     var query_Tag = '';
+    var goalids = '';
+
+    if($("#goalsIDs").length){
+      var goalids = $("#goalsIDs").data('goalids');
+    }
+
     if(catId() != '') catID = catId();
 
     if(campKeyWord() != '') key_word = campKeyWord();
@@ -560,6 +566,7 @@ $("#loadMore").on('click', function(e) {
             key_word: key_word,
             sorting: sortQuery,
             htag: query_Tag,
+            goalids: goalids,
             el_li: 'not',
             action: 'ajax_camp_script_load_more'
         },
@@ -672,10 +679,25 @@ $("#goal_submit").click(function () {
 
     //Display the selected CheckBox values.
     if (selected.length > 0) {
-        window.location.href = mycampaigns_url+'/?goals='+selected.join(",");
+        window.location.href = mycampaigns_url+'/?goalids='+selected.join(",");
     }
 });
-    
+
+
+$(window).load(function() {
+    if ($('#bus-supported-camp li').length <= 4) {
+          $('.show-more-btn.business-btn a ').hide();
+      }
+});
+
+  $('.show-more-btn.business-btn a').click(function (e) {
+      e.preventDefault();
+      $('#bus-supported-camp li:hidden').slice(0, 4).slideDown(500);
+      if ($('#bus-supported-camp li').length == $('#bus-supported-camp li:visible').length) {
+          $('.show-more-btn.business-btn a ').hide();
+      }
+  });
+
 })(jQuery);
 
 

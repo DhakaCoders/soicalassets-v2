@@ -126,6 +126,62 @@ function ajax_camp_script_load_more($args, $term_id='', $keyword = '', $htag = '
         )
       );
     }
+    if( !empty($keyword) ){
+        $q1 = get_posts(array(
+            'post_type'=> 'campaigns',
+            'post_status' => 'publish',
+            'posts_per_page' =>-1,
+            'orderby' => 'date',
+            'order'=> $sort,
+            'tax_query' => $termQuery,
+            's' => $keyword,
+        ));
+        $qids1 = array();
+        if(isset($q1) && $q1){
+            foreach( $q1 as $q ){
+                $qids1[]= $q->ID; 
+            }
+        }
+
+        $q2 = get_posts(array(
+            'post_type'=> 'campaigns',
+            'post_status' => 'publish',
+            'posts_per_page' =>-1,
+            'orderby' => 'date',
+            'order'=> $sort,
+            'tax_query' => $termQuery,
+            'meta_query' => array(
+                array(
+                   'key' => 'ngolocation',
+                   'value' => $keyword,
+                   'compare' => 'LIKE'
+                )
+             )  
+        ));
+        $qids2 = array();
+        if(isset($q2) && $q2){
+            foreach( $q2 as $qq ){
+                $qids2[]= $qq->ID; 
+            }
+        }
+
+
+$unique = array_unique( array_merge( $qids1, $qids2 ) );
+if( $unique ){
+    $query = new WP_Query(array(
+            'post_type'=> 'campaigns',
+            'post_status' => 'publish',
+            'posts_per_page' => -1,
+            'orderby' => 'date',
+            'order'=> $sort,
+            'tax_query' => $termQuery,
+            'post__in' => $unique,
+        ));
+}else{
+    $query = new WP_Query();
+}
+
+    }else{
     $query = new WP_Query(array( 
         'post_type'=> 'campaigns',
         'post_status' => 'publish',
@@ -133,8 +189,7 @@ function ajax_camp_script_load_more($args, $term_id='', $keyword = '', $htag = '
         'paged'=>$paged,
         'orderby' => 'date',
         'order'=> $sort,
-        'tax_query' => $termQuery,
-        's' => $keyword
+        'tax_query' => $termQuery
       ) 
     );
     $expquery = new WP_Query(array( 
@@ -143,10 +198,10 @@ function ajax_camp_script_load_more($args, $term_id='', $keyword = '', $htag = '
         'posts_per_page' => -1,
         'orderby' => 'date',
         'order'=> $sort,
-        'tax_query' => $termQuery,
-        's' => $keyword
+        'tax_query' => $termQuery
       ) 
     );
+    }
 
    // printr($query);
     if($query->have_posts()){

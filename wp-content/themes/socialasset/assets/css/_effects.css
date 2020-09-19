@@ -36,6 +36,11 @@ a,input,img,textarea,button{
     background: #e8e6e6;
 }
 
+
+#goal_submit:hover{
+    background: #fff;
+    color: #0055FF;
+}
 /**
 All Hovers
 */

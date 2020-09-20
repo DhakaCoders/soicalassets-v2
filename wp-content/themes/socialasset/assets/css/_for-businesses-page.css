@@ -67,6 +67,9 @@
 	.show-lg{
 		display: block!important;
 	}
+	.s2-for-businesses-page-cntlr .s2-to-be-supported-page-entry-hdr {
+	    padding-bottom: 80px;
+	}
 
 }
 
@@ -79,6 +82,9 @@
 	}
 	.for-bsns-cnt-sec-head p br{
 		display: none;
+	}
+	.s2-for-businesses-page-cntlr .s2-to-be-supported-page-entry-hdr {
+	    padding-bottom: 70px;
 	}
 }
 
@@ -104,6 +110,9 @@
 	}
 	.for-bsns-cnt-sec {
 	    padding-top: 80px;
+	}
+	.s2-for-businesses-page-cntlr .s2-to-be-supported-page-entry-hdr {
+	    padding-bottom: 50px;
 	}
 
 }

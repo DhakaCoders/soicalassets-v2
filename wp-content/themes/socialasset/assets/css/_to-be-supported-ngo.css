@@ -233,6 +233,12 @@
 		padding-left: 20px;
 		padding-right: 20px;
 	}
+	.press-section {
+	    padding: 70px 0 70px;
+	}
+	.press-sec-grd-item-fea-img {
+	    height: 310px;
+	}
 
 }
 
@@ -245,6 +251,15 @@
 	}
 	.s2tbspeh-top-bg{
 		margin-bottom: 45px;
+	}
+	.press-sec-hdr {
+	    padding-bottom: 30px;
+	}
+	.press-sec-hdr-title {
+	    margin-bottom: 25px;
+	}
+	.press-sec-grd-item-fea-img {
+	    height: 250px;
 	}
 }
 
@@ -262,6 +277,21 @@
 	.s2tbspeh-top-bg{
 		display: none;
 	}
+	.press-sec-grds ul li{
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.press-sec-grds ul{
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.press-sec-grd-item{
+		max-width: 400px;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 @media(max-width: 639px){
@@ -278,6 +308,18 @@
 	}
 	.collaborating-ngos-area-sec-inr{
 		padding-bottom: 10px;
+	}
+	.s2tbspeh-des p{
+		font-size: 19px;
+	}
+	.s2tbspeh-des p{
+		margin-bottom: 40px;
+	}
+	.collaborating-ngos-area-sec-inr ul li{
+		width: 100%;
+	}
+	.cnas-title{
+		margin-bottom: 70px;
 	}
 
 }

@@ -408,7 +408,9 @@ a.add_button:hover{
 	    padding-left: 25px;
 	    padding-right: 25px;
 	}
-	
+	.page-bnr-itb-title {
+	    font-size: 35px;
+	}
 
 }
 

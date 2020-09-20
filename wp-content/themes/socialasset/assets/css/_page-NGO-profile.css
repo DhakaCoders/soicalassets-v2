@@ -405,6 +405,10 @@ Gallery design
 		padding-left: 15px;
 		padding-right: 15px;
 	}
+	.ncc-campaign-gallery.ngogallery,
+	.ngovideo{
+		width: 100%;
+	}
 }
 
 @media(max-width: 639px){

@@ -77,6 +77,15 @@ $tags = get_terms( array(
                     </form>
                   </div>
                 </div>
+                <div class="campaigns-slect-filters-rgt show-md">
+                  <div class="sa-selctpicker-ctlr">
+                    <label>Sort by</label>
+                    <select id="campaign_sort" class="selectpicker" data-size="7">
+                      <option <?php echo ($order=='asc')? 'selected="selected"': ''; ?> value="asc">ASC</option>
+                      <option <?php echo ($order=='desc')? 'selected="selected"': ''; ?> value="desc">DESC</option>
+                    </select>
+                  </div>
+                </div>
 
                 <div class="campaigns-slect-filters-mid">
                   <?php
@@ -133,7 +142,7 @@ $tags = get_terms( array(
                   </div>
                 </div>
 
-                <div class="campaigns-slect-filters-rgt">
+                <div class="campaigns-slect-filters-rgt hide-md">
                   <div class="sa-selctpicker-ctlr">
                   <label>Sort by</label>
                   <select id="campaign_sort" class="selectpicker" data-size="7">

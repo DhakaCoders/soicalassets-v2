@@ -727,6 +727,10 @@ min-height: 42px;
 	#goalsFilter .dg-con i{
 		left: 20px;
 	}
+	.filter-check-row .checkmark:after {
+	    left: 4px!important;
+	    top: 1px!important;
+	}
 }
 @media(max-width: 1199px){
 	.campaigns-slect-filters-min-toggle ul li{
@@ -772,11 +776,17 @@ min-height: 42px;
 	.campaigns-slect-filters-rgt,
 	.campaigns-slect-filters-lft,
 	.campaigns-slect-filters-mid{
-		float: none;
+		float: left;
 		width: 100%;
 		padding-left: 0;
 		padding-right: 0;
 		margin-bottom: 25px;
+	}
+	.campaigns-slect-filters-rgt .sa-selctpicker-ctlr{
+		float: left;
+	}
+	.campaigns-slect-filters-rgt .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+	    width: 190px;
 	}
 }
 
@@ -829,12 +839,21 @@ min-height: 42px;
 		margin-left: auto;
 		margin-right: auto;
 	}
+	.csfm-btn{
+		padding-left: 20px;
+	}
 
 }
 
 @media(max-width: 479px){
-
-
+	.dg-con {
+	    padding-left: 0;
+	    padding-top: 55px;
+	}
+	.dg-con div span{
+		position: absolute;
+		left: 4px;
+	}
 }
 
 @media(max-width: 359px){

@@ -75,11 +75,16 @@ box-shadow: 0px 14px 23px 0px rgba(227,228,232,1);
 	background-repeat: no-repeat!important;
 	background-position: center center!important;
 }
+.s2-page-bnr-con{
+	padding-left: 15px;
+	padding-right: 15px;
+}
 .s2-page-bnr-title{
 	font-size: 50px;
 	line-height: 1;
 	color: #fff;
 	margin-bottom: 30px;
+	text-align: center;
 }
 .bnr-circle{
 	border: 5px solid #fff;
@@ -118,6 +123,11 @@ a.pbitb-btn{
 	margin-right: auto;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+	border: 2px solid #0055FF;
+}
+.page-bnr-itb-con{
+	padding-left: 15px;
+	padding-right: 15px;
 }
 .page-bnr-itb-icon{
 	display: flex;
@@ -128,9 +138,10 @@ a.pbitb-btn{
 .page-bnr-itb-title{
 	font-size: 50px;
 	font-weight: 700;
-	line-height: 1.2;
+	line-height: 1.1;
 	margin-bottom: 45px;
 	color: #fff;
+	text-align: center;
 }
 .video-play img{
 	margin-bottom: 0!important;
@@ -334,13 +345,26 @@ a.add_button:hover{
 }
 
 @media(max-width: 991px){
-
+	.bnr-circle{
+		max-width: 175px
+	}
+	.page-bnr-itb-title{
+		font-size: 45px;
+	}
+	.page-bnr-itb-icon{
+		margin-bottom: 45px;
+	}
 }
 
 @media(max-width: 767px){
-
 	.social-cookie-bar{
 		left:15px;
+	}
+	.page-bnr-itb-icon{
+		margin-bottom: 40px;
+	}
+	.page-bnr-itb-cntlr{
+		height: 650px;
 	}
 }
 
@@ -349,6 +373,12 @@ a.add_button:hover{
 		left:15px;
 		right: 15px;
 		bottom: 70px;
+	}
+	.s2-page-bnr-title{
+		font-size: 45px;
+	}
+	.page-bnr-itb-icon img{
+		max-width: 70px;
 	}
 }
 
@@ -363,6 +393,12 @@ a.add_button:hover{
 	.modal-login-form{
 		padding-left: 40px;
 		padding-right: 40px;
+	}
+	.s2-page-bnr-title{
+		font-size: 40px;
+	}
+	.page-bnr-itb-title {
+	    font-size: 40px;
 	}
 
 }

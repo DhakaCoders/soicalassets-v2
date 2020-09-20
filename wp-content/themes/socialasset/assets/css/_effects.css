@@ -37,10 +37,13 @@ a,input,img,textarea,button{
 }
 
 
-#goal_submit:hover{
+#goal_submit:hover,
+.ofi-btn a:hover,
+a.pbitb-btn:hover{
     background: #fff;
     color: #0055FF;
 }
+
 /**
 All Hovers
 */

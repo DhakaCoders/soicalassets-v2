@@ -25,6 +25,7 @@
 }
 .our-follow-impact ul{
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 }
 .our-follow-impact ul li{
@@ -79,6 +80,7 @@
 	margin-right: auto;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+	border: 2px solid #0055FF;
 }
 .ofi-btn a i{
 	font-size: 20px;
@@ -238,6 +240,7 @@ Gallery design
 	float: left;
 	padding: 0 12px;
 	margin-bottom: 24px;
+	width: 50%;
 }
 
 .gallery-item img {
@@ -335,6 +338,7 @@ Gallery design
 	justify-content: center;
 	margin-left: -11px;
 	margin-right: -11px;
+	flex-wrap: wrap;
 }
 .sdgs-grds ul li{
 	width: 25%;
@@ -352,3 +356,100 @@ Gallery design
   float: left;
   width: 40%;
 }
+
+
+
+
+
+
+@media(min-width: 1921px){
+/*	.container-fluid{
+		margin-left: 15%;
+		margin-right: 15%;
+	}*/
+}
+
+
+@media(max-width: 1499px){
+
+}
+
+@media(max-width: 1399px){
+
+}
+
+@media(max-width: 1299px){
+
+}
+
+@media(max-width: 1199px){
+	.social-development-goals-sec {
+	    padding-top: 55px;
+	}
+
+}
+
+@media(max-width: 991px){
+	.s2-ngo-profile-page-cntlr{
+		padding-bottom: 80px;
+		padding-top: 70px;
+	}
+}
+
+@media(max-width: 767px){
+	.our-follow-impact-grd{
+		width: 170px;
+		height: 170px;
+	}
+	.our-follow-impact ul li{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+@media(max-width: 639px){
+	.our-follow-impact ul li{
+		width: 50%;
+	}
+	.sdgs-grds ul{
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+	.sdgs-grds ul li{
+		width: 50%;
+	}
+}
+
+@media(max-width: 575px){
+	.video-play a:after{
+		width: 
+	}
+	.video-play a:after {
+	    width: 44px;
+	    height: 51px;
+	}
+	.gallery-wrap{
+		padding-bottom: 5px;
+	}
+}
+
+
+@media(max-width: 479px){
+	.our-follow-impact ul li{
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.video-play a:after {
+	    width: 35px;
+	    height: 38px;
+	}
+
+}
+
+@media(max-width: 359px){
+
+}
+
+

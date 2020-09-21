@@ -56,6 +56,35 @@ jQuery(document).ready( function($){
     });
   }
 
+    if($('#featured_poster').length){
+      var mediaUploader; 
+    $('#featured_poster').on('click', function(e){
+       e.preventDefault();
+        if(mediaUploader){
+            mediaUploader.open();
+            return;
+        }
+        
+        mediaUploader = wp.media.frames.file_frame = wp.media({
+           title: 'Choose a Featured Image',
+           button: {
+             text: 'Choose Image'  
+           },
+            multiple: false
+        });
+        
+        mediaUploader.on('select', function(){
+           mattachment = mediaUploader.state().get('selection').first().toJSON(); 
+        $('#_featured_poster').val(mattachment.id);
+        //$('#profile-picture-priview').css('background-image', 'url(' + attachment.url + ')');
+        $('#featured-picture-priview').html($('<img>',{id:'set-post-thumb',src:mattachment.sizes.full.url}));
+        })
+        
+        mediaUploader.open();
+    });
+  }
+  
+
   if($('#campaign_gallery').length){
     var multiMediaUploader; var duplicateID = 0;
       // multiple image selection for gallery

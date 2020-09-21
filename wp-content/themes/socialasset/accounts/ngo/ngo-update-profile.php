@@ -157,11 +157,11 @@ $mbcontent = !empty(get_field('btm_content', $ngo_data->ID))? get_field('btm_con
               ?>
               <div class="vposter-inner">
                 <div class="ngo-upload-cover-photo-inr">
-                  <div id="featured_image">
+                  <div id="featured_poster">
                   <span>Upload Poster</span>
                   <i><img src="<?php echo THEME_URI; ?>/assets/images/plus-black.png"></i>
                   </div>
-                  <input type="hidden" id="_featured_picture" name="vposter" value="<?php echo $mposterID; ?>">
+                  <input type="hidden" id="_featured_poster" name="vposter" value="<?php echo $mposterID; ?>">
                   <div id="featured-picture-priview" class="vposter-picture clearfix">
                     <?php echo $posterimg; ?>
                   </div>

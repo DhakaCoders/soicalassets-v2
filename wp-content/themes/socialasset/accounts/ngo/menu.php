@@ -16,6 +16,6 @@ $var1 = $wp_query->get( 'var1' );
     <button onclick='window.location.href = "<?php echo home_url('myaccount/add-campaign/'); ?>"'  
         class="tab-link <?php echo ($var1 == 'add-campaign') ? 'current' : ''; ?>"><span>CREATE A CAMPAIGN</span></button>
     <?php } ?>
-    <a href="<?php echo home_url('myaccount/update-profile/'); ?>">Profile Update</a>
+    <a class="tab-link <?php echo ($var1 == 'update-profile') ? 'current' : ''; ?>" href="<?php echo home_url('myaccount/update-profile/'); ?>">Profile Update</a>
   </div>
 </div>

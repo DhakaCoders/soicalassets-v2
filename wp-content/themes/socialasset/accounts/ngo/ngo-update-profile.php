@@ -56,7 +56,14 @@ $mbcontent = !empty(get_field('btm_content', $ngo_data->ID))? get_field('btm_con
           <?php if( isset($ngo_data->guid) && !empty($ngo_data->guid)): ?>
           <div class="ncc-input-fields-row ncc-input-title-fields-row">
             <label>URL</label>
-            <input type="text" name="post_url" value="<?php echo $ngo_data->guid;?>" >
+            <div class="editableurl">
+              <input type="text" id="post_url" name="post_url" readonly value="<?php echo $ngo_data->guid;?>">
+              <div class="editablebtn">
+                <span class="editbtn">Edit</span>
+                <span class="updatebtn" onclick="updatePostUrl(<?php echo $ngo_data->ID; ?>, 'ngo'); return false;">Ok</span>
+                <span class="cancelbtn">Cancel</span>
+              </div>
+            </div>
           </div>
           <?php endif; ?>
           <div class="width-425 ncc-input-fields-row ngo-upload-cover-photo">

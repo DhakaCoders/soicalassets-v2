@@ -1945,7 +1945,45 @@ a.ui-datepicker-next:after {
     display: inline-block;
     vertical-align: baseline;
 }
-
+.editableurl {
+    position: relative;
+}
+.editablebtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #eff0f4;
+    height: 100%;
+    display: flex;
+    padding: 0 12px;
+    align-items: center;
+}
+span.editbtn,
+span.updatebtn {
+    font-size: 14px;
+    text-decoration: underline;
+}
+span.editbtn.editaction {
+    display: none;
+    cursor: pointer;
+}
+span.cancelbtn {
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+span.updatebtn {
+    padding-right: 15px;
+    cursor: pointer;
+}
+span.updatebtn,
+span.cancelbtn{
+	display: none;
+}
+span.updatebtn.updateaction,
+span.cancelbtn.cancelaction {
+    display:block;
+}
 @media(max-width: 1499px){
 
 }

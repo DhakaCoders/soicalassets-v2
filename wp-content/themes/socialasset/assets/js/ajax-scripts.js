@@ -42,8 +42,64 @@ jQuery(document).ready(function($) {
         })
         return false;
     });
-});
 
+    $("#updateurl").on( 'click', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var nonce = $(this).data('nonce');
+        var postType = $(this).data('type');
+        var guid = $('#post_url').val();
+        console.log(postType);
+        $.ajax({
+            type: 'post',
+            url: ajax_update_url_object.ajaxurl,
+            data: {
+                action: 'profile_update_url',
+                nonce: nonce,
+                id: id,
+                guid: guid,
+                posttype: postType
+            },
+            success: function( result ) {
+                console.log(result);
+                if( result == 'success' ) {
+                    $("#post_url").attr("readonly", true);
+                    $(".cancelbtn").toggleClass('cancelaction');
+                    $(".updatebtn").toggleClass('updateaction');
+                    $(".editbtn").toggleClass('editaction');
+                }else{
+
+                }
+            }
+        })
+        return false;
+    });
+});
+function updatePostUrl(id, type){
+        var guid = jQuery('#post_url').val();
+        jQuery.ajax({
+            type: 'post',
+            url: ajax_update_url_object.ajaxurl,
+            data: {
+                action: 'profile_update_url',
+                nonce: 'nonce',
+                id: id,
+                guid: guid,
+                posttype: type
+            },
+            success: function( result ) {
+                if( result == 'success' ) {
+                    jQuery("#post_url").attr("readonly", true);
+                    jQuery(".cancelbtn").toggleClass('cancelaction');
+                    jQuery(".updatebtn").toggleClass('updateaction');
+                    jQuery(".editbtn").toggleClass('editaction');
+                }else{
+                    alert('Try again! Please.');
+                }
+            }
+        })
+        return false;
+}
 function campaignDraft(id, nonce){
     jQuery.ajax({
         type: 'post',

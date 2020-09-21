@@ -7,6 +7,7 @@ function global_action_hook(){
 		user_change_password_customly();
 		user_notification_settings_update();
 		ajax_my_support_capm_init();
+		ajax_updateurl_init();
 	}
 	forgot_password_init();
 }
@@ -107,6 +108,39 @@ function user_notification_settings_update(){
   			$msg['error'] = 'Settings could not update.';
   		}
 	}
+}
+
+function ajax_updateurl_init(){
+    wp_register_script('ajax-update_url-script', get_stylesheet_directory_uri(). '/assets/js/ajax-scripts.js', array('jquery') );
+    wp_enqueue_script('ajax-update_url-script');
+
+    wp_localize_script( 'ajax-update_url-script', 'ajax_update_url_object', array(
+        'ajaxurl' => admin_url( 'admin-ajax.php' )
+    ));
+    // Enable the user with no privileges to run ajax_login() in AJAX
+}
+add_action('wp_ajax_profile_update_url', 'profile_update_url');
+
+function profile_update_url(){
+    if( !isset($_POST['nonce']) && $_POST['nonce'] != 'nonce' ) {
+        echo 'error';
+    }
+    else {
+		global $wpdb;
+		$expurl = explode('/', $_POST['guid']);
+		$filterURl = array_filter($expurl);
+		$postname = end($filterURl);
+		$pid = $wpdb->update($wpdb->posts, array('guid'=> $_POST['guid'], 'post_name'=>$postname), 
+			array('id'=>$_POST['id'], 'post_type'=> $_POST['posttype']) );
+
+		if( $pid ){
+			echo 'success';
+		}
+		else{
+			echo 'unsuccess';
+		}
+    }
+    die();
 }
 
 function ajax_my_support_capm_init(){

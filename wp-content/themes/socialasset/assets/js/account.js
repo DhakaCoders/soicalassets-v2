@@ -304,4 +304,16 @@ $(window).on('resize', function(){
 });
 
 
+$(".editbtn").on('click', function(){
+  $("#post_url").attr("readonly", false);
+  $(this).toggleClass('editaction');
+  $(".updatebtn").toggleClass('updateaction');
+  $(".cancelbtn").toggleClass('cancelaction');
+});
+$(".cancelbtn").on('click',function(){
+  $("#post_url").attr("readonly", true);
+  $(this).toggleClass('cancelaction');
+  $(".updatebtn").toggleClass('updateaction');
+  $(".editbtn").toggleClass('editaction');
+});
 })(jQuery);

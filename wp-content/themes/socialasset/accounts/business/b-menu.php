@@ -11,6 +11,6 @@ $var1 = $wp_query->get( 'var1' );
   <?php if( isset($umetas['_show_my_campaigns']) && !empty($umetas['_show_my_campaigns']) && ( $umetas['_show_my_campaigns'] == 'true' )){?>
   <button onclick='window.location.href = "<?php echo home_url('myaccount/supported-campaigns/'); ?>"'  class="tab-link <?php echo ($var1 == 'supported-campaigns') ? 'current' : ''; ?>"><span>Supported campaigns</span></button>
   <?php } ?>
-  <a href="<?php echo home_url('myaccount/update-profile/'); ?>">Profile Update</a>
+  <a class="tab-link <?php echo ($var1 == 'update-profile') ? 'current' : ''; ?>" href="<?php echo home_url('myaccount/update-profile/'); ?>" href="<?php echo home_url('myaccount/update-profile/'); ?>">Profile Update</a>
 </div>
 </div>

@@ -50,7 +50,7 @@ $bcontent = !empty(get_field('profile_content', $bus_data->ID))? get_field('prof
             <label>Business Name</label>
             <input type="text" name="first_name" value="<?php echo !empty($user->first_name)? $user->first_name: '';?>" placeholder="Type a Name here" required="required">
             <?php if($bus_data){ ?>
-            <input type="hidden" name="postid" value="<?php echo $bus_data->ID ?>" required="required">
+            <input type="hidden" name="postid" value="<?php echo $bus_data->ID; ?>" required="required">
             <?php } ?>
           </div>
         </div>
@@ -58,7 +58,14 @@ $bcontent = !empty(get_field('profile_content', $bus_data->ID))? get_field('prof
           <?php if( isset($bus_data->guid) && !empty($bus_data->guid)): ?>
           <div class="ncc-input-fields-row ncc-input-title-fields-row">
             <label>URL</label>
-            <input type="text" name="post_url" value="<?php echo $bus_data->guid;?>" >
+            <div class="editableurl">
+              <input type="text" id="post_url" name="post_url" readonly value="<?php echo $bus_data->guid;?>">
+              <div class="editablebtn">
+                <span class="editbtn">Edit</span>
+                <span class="updatebtn" onclick="updatePostUrl(<?php echo $bus_data->ID; ?>, 'business'); return false;">Ok</span>
+                <span class="cancelbtn">Cancel</span>
+              </div>
+            </div>
           </div>
           <?php endif; ?>
           <div class="width-425 ncc-input-fields-row ngo-upload-cover-photo">
